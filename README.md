@@ -9,6 +9,13 @@ AWS_REGION = us-east-1 BentoML demo repo: https://github.com/entbappy/bentoml-de
 
 
 git init
+
 git remote -v
+
 git remote add origin 網址github
+
 git remote -v 
+
+git branch
+
+git pull origin main
