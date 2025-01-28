@@ -24,11 +24,15 @@ git pull origin main
 
 git add .
 
-git config --global user.name "使用者名稱"
+git config --global user.name "使用者名稱" (useless)
 
-git config --global user.email "使用者電子郵件"
+git config --global user.email "使用者電子郵件" (useless)
 
 git commit -m "folder updated"
+
+git branch -M main
+
+git push origin main
 
 ## MLOPS
 
@@ -92,3 +96,13 @@ git commit -m "folder updated"
   > `ci.yaml` :
 
 * `bentofile.yaml`: write down the entire configuration related to the Bento yaml only.
+
+* `tox.ini` : like test our cases. write down the configuration over here.
+
+* `setup.cfg` : if you want to publish this one as a package, you can mention the confiuration inside this setup.cfg.
+
+* `requirements_dev.txt` : write down the specific library just for development environment.
+
+* `requirements.txt` : for production whenever we are going to deploy it so well.
+
+* `init_setup.sh` : write our shell script just for automating the entire environment creation like this requirement installation
