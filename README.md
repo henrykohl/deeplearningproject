@@ -34,6 +34,44 @@ git branch -M main
 
 git push origin main
 
+...
+
+git add .
+
+git commit -m "more file added"
+
+git push -u origin main
+
+...
+
+conda create -p env python=3.8 -y
+
+> 不要使用`-n`
+
+source activate ./env
+
+pip install -r requirements_dev.txt
+
+> `-e .` 要 mask 掉，因為 setup.py 此時為空
+
+pip list
+
+> 檢查哪些 package 被安裝
+
+git status
+
+> 察看目前 git 狀態
+
+...
+
+git add .
+
+git commit -m "requirement added"
+
+git push (-f) origin main
+
+> `-f` 需要時，可以用
+
 ## MLOPS
 
 - ML
@@ -103,6 +141,14 @@ git push origin main
 
 * `requirements_dev.txt` : write down the specific library just for development environment.
 
+  > `dvc` -- do data management
+  >
+  > `mlflow` -- track each and every experiment by using this mlflow
+
 * `requirements.txt` : for production whenever we are going to deploy it so well.
 
 * `init_setup.sh` : write our shell script just for automating the entire environment creation like this requirement installation
+
+```
+
+```
