@@ -167,3 +167,15 @@ conda create -p venv python=3.8 -y
 conda activate venv的途徑
 pip install -r requirements_dev.txt
 ```
+
+注意 -- `requirements_dev.txt` 此時與 Lecture 1 中的 `requirements_dev.txt` 不同在於 六個 packages 需要指定版本。此 Lecture 的操作是在 Local 端~ 而 Lecture 1 是在 iNeuron 上 (本實做在 Codespace)
+
+```
+bentoml==1.0.25
+#bentoml==1.0.10
+joblib==1.2.0
+pip-chill==1.0.1
+torchvision==0.14.1
+tqdm==4.64.1
+wincertstore==0.2
+```
