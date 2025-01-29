@@ -8,69 +8,68 @@ AWS_SECRET_ACCESS_KEY= \*\*\*
 
 AWS_REGION = us-east-1 BentoML demo repo: https://github.com/entbappy/bentoml-demo
 
+```
 git init
-
 git remote -v
-
 git remote add origin 網址 github
-
 git remote -v
-
 git branch
-
 git pull origin main
+```
 
-...
+---
 
+```
 git add .
-
 git config --global user.name "使用者名稱" (useless)
-
 git config --global user.email "使用者電子郵件" (useless)
-
 git commit -m "folder updated"
-
 git branch -M main
-
 git push origin main
+```
 
-...
+---
 
+```
 git add .
-
 git commit -m "more file added"
-
 git push -u origin main
+```
 
-...
+---
 
+```
 conda create -p env python=3.8 -y
-
-> 不要使用`-n`
+#不要使用`-n`
 
 source activate ./env
 
 pip install -r requirements_dev.txt
-
-> `-e .` 要 mask 掉，因為 setup.py 此時為空
+# `-e .` 要 mask 掉，因為 setup.py 此時為空
 
 pip list
-
-> 檢查哪些 package 被安裝
+# 檢查哪些 package 被安裝
 
 git status
-
-> 察看目前 git 狀態
+# 察看目前 git 狀態
+```
 
 ...
 
+```
 git add .
-
 git commit -m "requirement added"
-
 git push (-f) origin main
+# `-f` 需要時，可以用
+```
 
-> `-f` 需要時，可以用
+...
+
+```
+git add .
+git commit -m "setup file updated"
+git push (-f) origin main
+```
 
 ## MLOPS
 
