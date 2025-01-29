@@ -8,6 +8,8 @@ AWS_SECRET_ACCESS_KEY= \*\*\*
 
 AWS_REGION = us-east-1 BentoML demo repo: https://github.com/entbappy/bentoml-demo
 
+# Lecture 1 -- [Deep Learning Essentials](https://www.youtube.com/watch?v=essGb4QDXEU)
+
 ```
 git init
 git remote -v
@@ -148,6 +150,20 @@ git push (-f) origin main
 
 * `init_setup.sh` : write our shell script just for automating the entire environment creation like this requirement installation
 
-```
+# Lecture 2 -- [Data Ingestion with S3](https://www.youtube.com/watch?v=3uXCAI3MOZ8)
 
+# Lecture 3 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
+
+In local site,
+
+> ```
+> git clone https://github.com/henrykohl/deeplearningproject.git
+> ```
+
+`Xray` 中 `components`, `entity`, `pipeline` 下都需要有 `__init__.py`
+
+```
+conda create -p venv python=3.8 -y
+conda activate venv的途徑
+pip install -r requirements_dev.txt
 ```
