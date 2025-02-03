@@ -1,7 +1,7 @@
 import sys
 
 from Xray.cloud_storage.s3_operation import S3Operation
-# from Xray.constant.training_pipeline import *
+from Xray.constant.training_pipeline import *
 from Xray.entity.artifact_entity import DataIngestionArtifact
 from Xray.entity.config_entity import DataIngestionConfig
 from Xray.exception import XRayException
@@ -9,9 +9,15 @@ from Xray.logger import logging
 
 class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig):
-        self.data_ingestion_config = data_ingestion_config
+        self.data_ingestion_config = data_ingestion_config 
+        # (the configuration of component)
+        # we are passing this data injection config from where we are passing you will get to know in some time
+        # actually we are passing from the training once we will run the training now 
+        # so automatically this data injection will call and we are passing the configuration 
+        # so we get the entire configuration over here
 
         self.s3 = S3Operation()
+        # (the operation)
 
     def get_data_from_s3(self) -> None:
         try:

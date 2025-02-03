@@ -179,3 +179,10 @@ torchvision==0.14.1
 tqdm==4.64.1
 wincertstore==0.2
 ```
+
+- Training_Pipeline -- Pipeline
+  > (1)> **Data_ingestion** --(2)--> (1)> **Data_transformation** -(2)-> **Model_training** -> **Model_evaluation**
+  >
+  > > (1) config, (2) artifact
+  >
+  > entity, logger, exception, constant, cloud_storage
