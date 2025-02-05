@@ -186,3 +186,7 @@ wincertstore==0.2
   > > (1) config, (2) artifact
   >
   > entity, logger, exception, constant, cloud_storage
+
+## Tech issues
+
+- [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
