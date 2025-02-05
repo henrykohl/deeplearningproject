@@ -190,3 +190,38 @@ wincertstore==0.2
 ## Tech issues
 
 - [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
+
+# Lecture 3
+
+##workflow
+* constants
+* config_entity
+* artifact_entity
+* components
+* pipeline
+* main
+
+## How to setup
+
+```bash
+conda create -n lungs python=3.8 -y
+```
+
+```bash
+conda activate lungs
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+setup AWS CLI
+link: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+```
+
+```bash
+aws configure
+```
+
+
