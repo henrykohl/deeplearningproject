@@ -152,8 +152,6 @@ git push (-f) origin main
 
 # Lecture 2 -- [Data Ingestion with S3](https://www.youtube.com/watch?v=3uXCAI3MOZ8)
 
-# Lecture 2 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
-
 In local site,
 
 > ```
@@ -187,19 +185,16 @@ wincertstore==0.2
   >
   > entity, logger, exception, constant, cloud_storage
 
-## Tech issues
-
-- [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
-
-# Lecture 3
+# Lecture 3 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
 
 ##workflow
-* constants
-* config_entity
-* artifact_entity
-* components
-* pipeline
-* main
+
+- constants
+- config_entity
+- artifact_entity
+- components
+- pipeline
+- main
 
 ## How to setup
 
@@ -223,7 +218,21 @@ link: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 ```bash
 aws configure
 ```
-```bash
 
+```bash
+AWS_ACCESS_KEY_ID=*****************************
+
+AWS_SECRET_ACCESS_KEY=***************************
+
+AWS_REGION = us-esat-1
 ```
 
+## Tech issues
+
+- [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
+
+- [Python import 簡易教學](https://medium.com/@alan81920/c98e8e2553d3)
+
+- [Python 相對匯入與絕對匯入](https://brainynight.github.io/notes/python-import/)
+
+- [Python——在不同層目錄 import 模塊的方法](https://blog.csdn.net/weixin_41605937/article/details/124909644)
