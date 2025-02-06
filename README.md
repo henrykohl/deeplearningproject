@@ -152,7 +152,7 @@ git push (-f) origin main
 
 # Lecture 2 -- [Data Ingestion with S3](https://www.youtube.com/watch?v=3uXCAI3MOZ8)
 
-# Lecture 3 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
+# Lecture 2 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
 
 In local site,
 
