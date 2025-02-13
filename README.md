@@ -227,6 +227,36 @@ AWS_SECRET_ACCESS_KEY=***************************
 AWS_REGION = us-esat-1
 ```
 
+## Data Transformation (->)
+
+> 1. Augmentation
+>    > 1. Brightness
+>    >
+>    > 2. Saturation
+>    >
+>    > 3. Size
+>    >
+>    > 4. Normalization
+>    >
+>    > 5. Centercrop
+>    >
+>    > 6. Random Rotation
+
+- (->) : train-data.pkl & test-data.pkl
+
+  > In `model training component`, we will load these particular two data (->).
+
+- Start with model training, it's just a pipeline:
+  > Data Ingestion -> download data from S3
+  >
+  > Data Transformation -> Augmentation (saving data in a pkl format)
+  >
+  > Model Trainer -> load the data & start the model trainer component
+  >
+  > Model Evaluation -> test your model on top of the dataest you are having
+  >
+  > Model Pusher -> push this model to the S3 bucket
+
 ## Tech issues
 
 - [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
