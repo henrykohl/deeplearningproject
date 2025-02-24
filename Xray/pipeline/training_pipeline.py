@@ -1,8 +1,8 @@
 import sys
-from Xray.components.data_ingestion import DataIngestion
-from Xray.entity.artifact_entity import DataIngestionArtifact
-from Xray.entity.config_entity import DataIngestionConfig
-from Xray.components.data_transformation import DataTransformation
+from Xray.components.data_ingestion import DataIngestion           # Lec 2 
+# from Xray.entity.artifact_entity import DataIngestionArtifact      # Lec 2 (old)
+# from Xray.entity.config_entity import DataIngestionConfig          # Lec 2 (old)
+from Xray.components.data_transformation import DataTransformation # Lec 3
 from Xray.components.model_training import ModelTrainer
 from Xray.components.model_evaluation import ModelEvaluation
 from Xray.components.model_pusher import ModelPusher
@@ -10,16 +10,16 @@ from Xray.exception import XRayException
 from Xray.logger import logging
 
 from Xray.entity.artifact_entity import (
-    DataIngestionArtifact,
-    DataTransformationArtifact,
-    ModelTrainerArtifact,
-    ModelEvaluationArtifact,
-    ModelPusherArtifact
+    DataIngestionArtifact,                                         # Lec 2 (new)
+    DataTransformationArtifact,                                    # Lec 3
+    # ModelTrainerArtifact,
+    # ModelEvaluationArtifact,
+    # ModelPusherArtifact
     )
 
 from Xray.entity.config_entity import (
-    DataIngestionConfig,
-    DataTransformationConfig,
+    DataIngestionConfig,                                           # Lec 2 (new)
+    DataTransformationConfig,                                      # Lec 3
     # ModelTrainerConfig,
     # ModelEvaluationConfig,
     # ModelPusherConfig
@@ -28,13 +28,21 @@ from Xray.entity.config_entity import (
 
 class TrainPipeline:
     def __init__(self):
-        self.data_ingestion_config = DataIngestionConfig()
-        self.data_transformation_config = DataTransformationConfig()
+        self.data_ingestion_config = DataIngestionConfig()             # Lec 2
+        self.data_transformation_config = DataTransformationConfig()   # Lec 3
         # self.model_trainer_config = ModelTrainerConfig()
         # self.model_evaluation_config=ModelEvaluationConfig()
         # self.model_pusher_config = ModelPusherConfig()
         
     def start_data_ingestion(self) -> DataIngestionArtifact:
+        """_summary_ : 用於 Lec 2
+
+        Raises:
+            XRayException: 略
+
+        Returns:
+            DataIngestionArtifact: 略
+        """
         logging.info("Entered the start_data_ingestion method of TrainPipeline class")
         try:
 
@@ -58,7 +66,17 @@ class TrainPipeline:
             raise XRayException(e, sys)
 
     def start_data_transformation(self, data_ingestion_artifact: DataIngestionArtifact) -> DataTransformationArtifact:
-        
+        """_summary_ : 用於 Lec 3
+
+        Args:
+            data_ingestion_artifact (DataIngestionArtifact): _description_
+
+        Raises:
+            XRayException: _description_
+
+        Returns:
+            DataTransformationArtifact: _description_
+        """
         logging.info("Entered the start_data_transformation method of TrainPipeline class")
 
         try:
@@ -142,8 +160,8 @@ class TrainPipeline:
         logging.info("Entered the run_pipeline method of TrainPipeline class")
 
         try:
-            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
-            data_transformation_artifact: DataTransformationArtifact = (
+            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()      # Lec 2
+            data_transformation_artifact: DataTransformationArtifact = (                      # Lec 3
                 self.start_data_transformation(
                     data_ingestion_artifact=data_ingestion_artifact
                 )
