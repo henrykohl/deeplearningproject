@@ -4,15 +4,15 @@ from Xray.components.data_ingestion import DataIngestion           # Lec 2
 # from Xray.entity.config_entity import DataIngestionConfig          # Lec 2 (old)
 from Xray.components.data_transformation import DataTransformation # Lec 3
 from Xray.components.model_training import ModelTrainer
-from Xray.components.model_evaluation import ModelEvaluation
-from Xray.components.model_pusher import ModelPusher
+# from Xray.components.model_evaluation import ModelEvaluation
+# from Xray.components.model_pusher import ModelPusher
 from Xray.exception import XRayException
 from Xray.logger import logging
 
 from Xray.entity.artifact_entity import (
     DataIngestionArtifact,                                         # Lec 2 (new)
     DataTransformationArtifact,                                    # Lec 3
-    # ModelTrainerArtifact,
+    ModelTrainerArtifact,                                          # Lec 4
     # ModelEvaluationArtifact,
     # ModelPusherArtifact
     )
@@ -20,7 +20,7 @@ from Xray.entity.artifact_entity import (
 from Xray.entity.config_entity import (
     DataIngestionConfig,                                           # Lec 2 (new)
     DataTransformationConfig,                                      # Lec 3
-    # ModelTrainerConfig,
+    ModelTrainerConfig,                                            # Lec 4
     # ModelEvaluationConfig,
     # ModelPusherConfig
 )
@@ -30,7 +30,7 @@ class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()             # Lec 2
         self.data_transformation_config = DataTransformationConfig()   # Lec 3
-        # self.model_trainer_config = ModelTrainerConfig()
+        self.model_trainer_config = ModelTrainerConfig()               # Lec 4
         # self.model_evaluation_config=ModelEvaluationConfig()
         # self.model_pusher_config = ModelPusherConfig()
         
@@ -168,9 +168,9 @@ class TrainPipeline:
             )
 
 
-            # model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(
-            #     data_transformation_artifact=data_transformation_artifact
-            # )
+            model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(
+                data_transformation_artifact=data_transformation_artifact
+            )
             
             # model_evaluation_artifact: ModelEvaluationArtifact = (
             #     self.start_model_evaluation(
