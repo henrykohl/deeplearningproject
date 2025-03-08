@@ -716,7 +716,157 @@ python main.py
 
 - Git Commit: "data transformation added"
 
-## Tech issues
+# Lecture 4 -- [Model Trainer & Bento ML](https://www.youtube.com/watch?v=Aahc28-f4hc)
+
+- Agenda & Review
+  > 1. Introduction and Project setup (Lecture 1)
+  >
+  > 2. Data Ingestion -> S3 (Lecture 2)
+  >
+  > 3. Data Transformation -> Augmentation (Lecture 3)
+  >
+  > 4. Model Trainer (Lecture 4)
+  >
+  > 5. BentoML Demo -> MLOPs tools (Lecture 4)
+  >    > perform -- model serving, application packaging and production grid deployment
+
+* Component Architecture
+
+  > |Data Ingestion|
+  >
+  > > --> Train Data
+  > >
+  > > --> Test Data
+  >
+  > |Data Transformation|
+  >
+  > > --> Transformed Train Data
+  > >
+  > > --> Transformed Test Data
+  >
+  > |Model Trainer| (\*)
+  >
+  > > Trained Model
+  >
+  > |Model Evaluation| (\*)
+  >
+  > > Metrices
+  >
+  > |Model Pusher| (\*)
+  >
+  > > --> S3 bucket (push the model we have trained to the S3)
+  > > (\*) : BentoML as MLOPS tool
+
+- `/Xray/constant/training_pipeline/__init__.py` (新增 model trainer constants 的部分)
+
+* `/Xray/entity/config_entity.py` (新增 class ModelTrainerConfig 的部分)
+
+* `/Xray/entity/artifact_entity.py` (新增 class ModelTrainerArtifact 的部分)
+
+* 參考 [Training with PyTorch](https://pytorch.org/tutorials/beginner/introyt/trainingyt.html)
+
+* `/Xray/ml`
+
+  > `__init__.py`
+  >
+  > `/model`
+  >
+  > > `__init__.py`
+  > >
+  > > 完成 `arch.py`
+
+* 完成 `/Xray/components/model_training.py`
+
+  > 重點在
+  >
+  > ```python
+  > bentoml.pytorch.save_model(
+  >
+  >                name=self.model_trainer_config.trained_bentoml_model_name,
+  >                model=model,
+  >                custom_objects={
+  >                    self.model_trainer_config.train_transforms_key: train_transforms_obj
+  >                },
+  >            )
+  > ```
+  >
+  > 參考 [BentoML Documentation](https://docs.bentoml.com/en/latest/index.html)
+
+* 「1」Training Pipeline (Review)
+
+  > 1. Data Ingestion
+  >
+  > 2. Data Transformation
+  >
+  > 3. Model Trainer
+  >
+  > 4. Model Evaluation
+  >
+  > 5. Model Pusher
+
+* 「2」Prediction Pipeline
+
+  > 1. load model
+  >
+  > 2. prediction
+
+* 「3」|Flask| --> API --> |Web Interface|
+
+  > user --> |Web Interface| --> prediction
+
+* 「1」+「2」+「3」是針對 localhost 運行，一般使用者無法存取，所以需要 development~~
+
+* |CICD AWS|
+
+  > Docker --> ECR --> EC2
+
+* |Bento ML|
+
+  > Model Serving
+  >
+  > Application Packaging --> bento.yaml --> Bento Image
+  >
+  > > AWS
+  > > Azure
+  > > GCP
+
+* Bento Demo (57:00) -- [Bento Demo Repo](https://github.com/entbappy/bentoml-demo/)
+
+  > 執行命令: `conda activate env` (env 需要先建立)
+  >
+  > `requirements.txt`
+  >
+  > > 執行命令: `pip install -r requirements.txt`
+  >
+  > `bento_train.py`
+  >
+  > > 執行命令: `python bento_train.py`
+  >
+  > `bento_cmd.txt`
+  >
+  > `bento_test.py`
+  >
+  > > 執行命令: `python bento_test.py`
+  >
+  > `service.py` (1:10:18)
+  >
+  > `bentoml_cmd.txt`
+  >
+  > > 執行命令: `bentoml serve service.py:service --reload`
+  >
+  > `bentofile.yaml` (1:14:29)
+  >
+  > 執行命令: `bentoml build`
+
+* Git Commit: "model trainer added" (1:28:00)
+
+* Bento Demo 實做 Repo 與 notes ，參見 [My BentoML Demo -- README](https://github.com/henrykohl/bentoml-demo/)
+
+# 補充
+
+- `colabscript.ipynb` 可以實現將此 project (Lec 1 ~ Lec 3) 在 Colab 上運行（可使用 free GPU）
+
+# Tech issues
 
 - 參 1 [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
 
