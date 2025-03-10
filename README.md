@@ -657,7 +657,7 @@ AWS_ACCESS_KEY_ID=*****************************
 
 AWS_SECRET_ACCESS_KEY=***************************
 
-AWS_REGION = us-esat-1
+AWS_REGION = us-east-1
 ```
 
 ```bash
@@ -865,6 +865,115 @@ python main.py
 # 補充
 
 - `colabscript.ipynb` 可以實現將此 project (Lec 1 ~ Lec 3) 在 Colab 上運行（可使用 free GPU）
+
+## 4 個非常有用(有限度免費)的 Cloud editor -- Codespaces、Gitpod、Codesandbox、Stackblitz
+
+> Lecture 1 使用的 `requirements.txt` ，而沒有用到 `setup.py`
+
+```sh
+bentoml
+torchvison
+joblib
+tqdm
+pip-chill
+wincertstore
+
+-e .
+```
+
+> Lecture 2 使用的 `requirements_dev.txt` 和 `setup.py`
+
+```sh
+bentoml
+torchvision
+joblib
+tqdm
+pip-chill
+wincertstore
+
+dvc
+mlflow
+ipykernel
+pandas
+numpy
+seaborn
+
+pytest==7.1.3
+tox==3.25.1
+black==22.8.0
+flake8==5.0.4
+mypy==0.971
+
+#-e .
+```
+
+```python
+## setup.py
+from setuptools import find_packages,setup
+from typing import List
+
+HYPEN_E_DOT='-e .'
+
+def get_requirements(file_path:str)->List[str]:
+    requirements=[]
+    with open(file_path) as file_obj:
+        requirements=file_obj.readlines()
+        requirements=[req.replace("\n","") for req in requirements]
+
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+
+    return requirements
+
+
+setup(
+
+name="Xray",
+version="0.0.1",
+author="henry kohl",
+author_email="u860218@gmail.com",
+# install_requires=get_requirements(r"C:\\Users\\sunny\\deeplearningproject\\requirements_dev.txt"),
+install_requires=get_requirements(r"//workspaces//deeplearningproject//requirements_dev.txt"),
+package=find_packages()
+
+)
+```
+
+> Lecture 3 & 4 使用不同的 `requirements.txt` 和 `setup.py`
+
+```sh
+# requirements.txt
+bentoml==1.0.25
+joblib==1.2.0
+pip-chill==1.0.1
+torchvision==0.14.1
+tqdm==4.64.1
+wincertstore==0.2
+-e .
+```
+
+```python
+## setup.py
+from setuptools import find_packages, setup
+
+setup(
+    name = 'xray',
+    version= '0.0.0',
+    author= 'Bappy iNeuron',
+    author_email= 'boktiar@ineuron.ai',
+    packages= find_packages(),
+    install_requires = []
+
+)
+```
+
+### Codespaces
+
+### Gitpod
+
+### Codesandbox
+
+### Stackblitz
 
 # Tech issues
 
