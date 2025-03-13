@@ -866,7 +866,7 @@ python main.py
 
 - `colabscript.ipynb` 可以實現將此 project (Lec 1 ~ Lec 3) 在 Colab 上運行（可使用 free GPU）
 
-## 4 個非常有用(有限度免費)的 Cloud editor -- Codespaces、Gitpod、Codesandbox、Stackblitz
+## Lecture 1 ~ 4 實做細節（依據 Codespaces）
 
 > Lecture 1 使用的 `requirements.txt` ，而沒有用到 `setup.py`
 
@@ -959,21 +959,113 @@ from setuptools import find_packages, setup
 setup(
     name = 'xray',
     version= '0.0.0',
-    author= 'Bappy iNeuron',
-    author_email= 'boktiar@ineuron.ai',
+    author= 'Henry Hsu',
+    author_email= 'u860218@gmail.com',
     packages= find_packages(),
     install_requires = []
 
 )
 ```
 
+## 4 個非常有用(有限度免費)的 Cloud editor -- Codespaces、Gitpod、Codesandbox、Codeanywhere、
+
+- 開啟 Cloud editor 之後，環境設定的（相同部分）過程如下
+  > 1. 先安裝 **Conda** (Codespaces 不需要)
+  >    > ```bash
+  >    > mkdir .tmp
+  >    > cd .tmp
+  >    > wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+  >    > bash Anaconda3-2020.07-Linux-x86_64.sh
+  >    > ```
+  >    >
+  >    > 最後一步驟「Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no] [no] >>> yes」
+  >    > 接著要啟動一個 bash shell，有兩個方式
+  >    >
+  >    > > 方式 1: 在原 terminal 輸入，`eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"`
+  >    >
+  >    > > 方式 2: 開啟一個新的 bash shell terminal
+  >    >
+  >    > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
+  > 2. 用 conda 建立 virtual environment
+  >    > 切換到 project 工作目錄
+  >    >
+  >    > ```bash
+  >    > conda create -p env python==3.8 -y
+  >    > conda create --name env python==3.8 -y ## 另法
+  >    > # conda create -p env python=3.8 -y ## 當啟動 env 後，有時候 python 版本依然是最新版，非版本3.8
+  >    > ```
+  >    >
+  >    > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
+  > 3. 安裝 aws CLI
+  >    > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
+  >    >
+  >    > ```bash
+  >    > curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  >    > unzip awscliv2.zip
+  >    > sudo ./aws/install
+  >    > ```
+  >    >
+  >    > 執行 `aws configuration` 看是否 aws CLI 安裝成功
+  >    >
+  >    > 設定 aws，執行 `aws configure`
+  >    >
+  >    > ```
+  >    > 輸入 AWS Access Key ID
+  >    > 輸入 AWS Secret Access Key
+  >    > Default region name 輸入: us-east-1
+  >    > Default output format[None]: 按下 Enter
+  >    > ```
+
 ### Codespaces
 
 ### Gitpod
 
+- Conda 安裝完後，不安裝 virtual environment，在 bash shell 中 python 版本就是 3.8.3
+
+* 在 project 工作目錄 -- 建立 `requirements.txt` 與 `setup.py`
+
+- 在 project 工作目錄 -- 執行 `python main.py`
+
 ### Codesandbox
 
-### Stackblitz
+### Codeanywhere
+
+```bash
+mkdir -p ~/miniconda3
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda3/miniconda.sh  # (wget 要使用 -O)
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+
+source ~/miniconda3/bin/activate
+conda list # 測試
+python --version ## 是 Python 3.12.9
+
+conda create -p env python==3.8.0 -y
+conda activate ./env
+python --version ## 是 Python 3.8.0
+
+conda activate ./env
+```
+
+用 conda 啟動 env 後，在 .tmp 目錄下 執行
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+執行 `aws configuration` 看是否 aws CLI 安裝成功
+設定 aws，執行 `aws configure`
+
+```
+輸入 AWS Access Key ID
+輸入 AWS Secret Access Key
+Default region name 輸入: us-east-1
+Default output format[None]: 按下 Enter
+```
+
+### Replit (未能完成)
 
 # Tech issues
 
@@ -987,6 +1079,27 @@ setup(
 
 - 參 5 [Python——在不同層目錄 import 模塊的方法](https://blog.csdn.net/weixin_41605937/article/details/124909644)
 
+* 參 6 [Meaning of -b and -p in bash script.sh](https://stackoverflow.com/questions/58303251/meaning-of-b-and-p-in-bash-script-sh-b-p-directory)
+
 /usr/local/bin/aws
 
 /usr/local/aws-cli/v2/current
+
+```bash
+mkdir -p ~/miniconda3
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/workspace/miniconda.sh  # (wget 要使用 -O)
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+
+source ~/miniconda3/bin/activate
+conda list # 測試
+python --version ## 是 Python 3.12.9
+
+conda create -p env python==3.8.0 -y
+conda activate ./env
+python --version ## 是 Python 3.8.0
+
+conda activate ./env
+aws configuration # 選擇 awscli 或 awscli2 (在Replit中好似不能自行下載awscli後進行安裝)
+
+```
