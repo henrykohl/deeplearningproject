@@ -967,68 +967,36 @@ setup(
 )
 ```
 
-## 4 個非常有用(有限度免費)的 Cloud editor -- Codespaces、Gitpod、Codesandbox、Codeanywhere、
+## 非常有用的 Saas Cloud dev environment for python
 
-- 開啟 Cloud editor 之後，環境設定的（相同部分）過程如下
-  > 1. 先安裝 **Conda** (Codespaces 不需要)
-  >    > ```bash
-  >    > mkdir .tmp
-  >    > cd .tmp
-  >    > wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-  >    > bash Anaconda3-2020.07-Linux-x86_64.sh
-  >    > ```
-  >    >
-  >    > 最後一步驟「Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no] [no] >>> yes」
-  >    > 接著要啟動一個 bash shell，有兩個方式
-  >    >
-  >    > > 方式 1: 在原 terminal 輸入，`eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"`
-  >    >
-  >    > > 方式 2: 開啟一個新的 bash shell terminal
-  >    >
-  >    > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
-  > 2. 用 conda 建立 virtual environment
-  >    > 切換到 project 工作目錄
-  >    >
-  >    > ```bash
-  >    > conda create -p env python==3.8 -y
-  >    > conda create --name env python==3.8 -y ## 另法
-  >    > # conda create -p env python=3.8 -y ## 當啟動 env 後，有時候 python 版本依然是最新版，非版本3.8
-  >    > ```
-  >    >
-  >    > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
-  > 3. 安裝 aws CLI
-  >    > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
-  >    >
-  >    > ```bash
-  >    > curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  >    > unzip awscliv2.zip
-  >    > sudo ./aws/install
-  >    > ```
-  >    >
-  >    > 執行 `aws configuration` 看是否 aws CLI 安裝成功
-  >    >
-  >    > 設定 aws，執行 `aws configure`
-  >    >
-  >    > ```
-  >    > 輸入 AWS Access Key ID
-  >    > 輸入 AWS Secret Access Key
-  >    > Default region name 輸入: us-east-1
-  >    > Default output format[None]: 按下 Enter
-  >    > ```
+> - Codespaces
+>
+> - Codesandbox
+>
+> - Gitpod
+>
+> - Codeanywhere
+>
+> - Replit
+>
+> - RunCode
+
+---
+
+- 開啟以上任一 Saas Cloud editor 並完成 project import (from Github) 之後，首要的工作為進行環境設定。
+  > 先開啟 terminal 以執行後續步驟
 
 ### Codespaces
 
-### Gitpod
-
-- Conda 安裝完後，不安裝 virtual environment，在 bash shell 中 python 版本就是 3.8.3
-
-* 在 project 工作目錄 -- 建立 `requirements.txt` 與 `setup.py`
-
-- 在 project 工作目錄 -- 執行 `python main.py`
+步驟就是前面 Lecture 1 ~ Lecture 4 的方式
 
 ### Codesandbox
 
+完全同 Codespaces 的步驟
+
 ### Codeanywhere
+
+- 1. 先安裝 **Conda**
 
 ```bash
 mkdir -p ~/miniconda3
@@ -1039,24 +1007,29 @@ rm ~/miniconda3/miniconda.sh
 source ~/miniconda3/bin/activate
 conda list # 測試
 python --version ## 是 Python 3.12.9
+```
 
+- 2. 用 conda 建立 virtual environment
+
+```bash
 conda create -p env python==3.8.0 -y
 conda activate ./env
 python --version ## 是 Python 3.8.0
 
-conda activate ./env
+conda activate ./env ## 用 conda 啟動 env
 ```
 
-用 conda 啟動 env 後，在 .tmp 目錄下 執行
+- 3. 安裝 aws CLI -- 在 .tmp 目錄下執行 (要使用 bash shell)
 
 ```bash
+mkdir .tmp && cd $_
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-```
 
-執行 `aws configuration` 看是否 aws CLI 安裝成功
-設定 aws，執行 `aws configure`
+aws configuration ## 測試 aws CLI 是否安裝成功
+aws configure ## 設定 aws CLI
+```
 
 ```
 輸入 AWS Access Key ID
@@ -1065,29 +1038,63 @@ Default region name 輸入: us-east-1
 Default output format[None]: 按下 Enter
 ```
 
+### Gitpod
+
+- 1.  先安裝 **Conda** (Codespaces 不需要)
+      > ```bash
+      > mkdir .tmp
+      > cd .tmp
+      > wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+      > bash Anaconda3-2020.07-Linux-x86_64.sh
+      > ```
+      >
+      > 最後一步驟「Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no] [no] >>> yes」
+      > 接著要啟動一個 bash shell，有兩個方式
+      >
+      > > 方式 1: 在原 terminal 輸入，`eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"`
+      >
+      > > 方式 2: 開啟一個新的 bash shell terminal
+      >
+      > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
+- 2.  用 conda 建立 virtual environment
+      > 切換到 project 工作目錄
+      >
+      > ```bash
+      > conda create -p env python==3.8 -y
+      > conda create --name env python==3.8 -y ## 另法
+      > # conda create -p env python=3.8 -y ## 當啟動 env 後，有時候 python 版本依然是最新版，非版本3.8
+      > ```
+      >
+      > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
+- 3.  安裝 aws CLI
+      > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
+      >
+      > ```bash
+      > curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      > unzip awscliv2.zip
+      > sudo ./aws/install
+      > ```
+      >
+      > 執行 `aws configuration` 看是否 aws CLI 安裝成功
+      >
+      > 設定 aws，執行 `aws configure`
+      >
+      > ```
+      > 輸入 AWS Access Key ID
+      > 輸入 AWS Secret Access Key
+      > Default region name 輸入: us-east-1
+      > Default output format[None]: 按下 Enter
+      > ```
+
+* Conda 安裝完後，不安裝 virtual environment，在 bash shell 中 python 版本就是 3.8.3
+
+-
+
 ### Replit (未能完成)
-
-# Tech issues
-
-- 參 1 [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
-
-- 參 2 [AWS SSO + Codespaces](https://gist.github.com/pahud/ba133985e1cf3531c09b5ea553a72739)
-
-- 參 3 [Python import 簡易教學](https://medium.com/@alan81920/c98e8e2553d3)
-
-- 參 4 [Python 相對匯入與絕對匯入](https://brainynight.github.io/notes/python-import/)
-
-- 參 5 [Python——在不同層目錄 import 模塊的方法](https://blog.csdn.net/weixin_41605937/article/details/124909644)
-
-* 參 6 [Meaning of -b and -p in bash script.sh](https://stackoverflow.com/questions/58303251/meaning-of-b-and-p-in-bash-script-sh-b-p-directory)
-
-/usr/local/bin/aws
-
-/usr/local/aws-cli/v2/current
 
 ```bash
 mkdir -p ~/miniconda3
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/workspace/miniconda.sh  # (wget 要使用 -O)
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda/miniconda.sh  # (wget 要使用 -O)
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm ~/miniconda3/miniconda.sh
 
@@ -1101,5 +1108,43 @@ python --version ## 是 Python 3.8.0
 
 conda activate ./env
 aws configuration # 選擇 awscli 或 awscli2 (在Replit中好似不能自行下載awscli後進行安裝)
-
 ```
+
+- 建立 `requirements.txt` 與 `setup.py`後，執行
+
+```bash
+pip install -r requirements.txt
+```
+
+但由於 storage limitation, 安裝到一半就出現空間不足的 Error，無法完全成功安裝所有 packages
+
+### RunCode (未測試)
+
+似乎免費空間比 Replit 大
+
+---
+
+- 在 project 工作目錄 -- 建立 `requirements.txt` 與 `setup.py`
+
+* 在 project 工作目錄 -- 執行 `python main.py`
+
+# Tech issues
+
+- 參 1 [Installating AWS CLI on Windows 7](https://github.com/aws/aws-cli/issues/7659)
+
+- 參 2 [AWS SSO + Codespaces](https://gist.github.com/pahud/ba133985e1cf3531c09b5ea553a72739)
+
+- 參 3 [Python import 簡易教學](https://medium.com/@alan81920/c98e8e2553d3)
+
+- 參 4 [Python 相對匯入與絕對匯入](https://brainynight.github.io/notes/python-import/)
+
+- 參 5 [Python——在不同層目錄 import 模塊的方法](https://blog.csdn.net/weixin_41605937/article/details/124909644)s
+
+* 參 6 [Meaning of -b and -p in bash script.sh](https://stackoverflow.com/questions/58303251/meaning-of-b-and-p-in-bash-script-sh-b-p-directory)
+
+* 參 7 [Compare CodeSandbox vs. Codeanywhere vs. Codespaces vs. Gitpod](https://slashdot.org/software/comparison/CodeSandbox-vs-Codeanywhere-vs-Codespaces-vs-Gitpod/)
+  > 共同特徵 -- online IDE for full stack project?
+
+/usr/local/bin/aws
+
+/usr/local/aws-cli/v2/current
