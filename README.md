@@ -990,6 +990,12 @@ setup(
 
 步驟就是前面 Lecture 1 ~ Lecture 4 的方式
 
+- 1. 先安裝 **Conda**
+
+- 2. 用 conda 建立 virtual environment
+
+- 3. 安裝 aws CLI -- 在 .tmp 目錄下執行 (要使用 bash shell)
+
 ### Codesandbox
 
 完全同 Codespaces 的步驟
@@ -1038,57 +1044,60 @@ Default region name 輸入: us-east-1
 Default output format[None]: 按下 Enter
 ```
 
-### Gitpod
+### Gitpod (啟動很慢)
 
 - 1.  先安裝 **Conda** (Codespaces 不需要)
-      > ```bash
-      > mkdir .tmp
-      > cd .tmp
-      > wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-      > bash Anaconda3-2020.07-Linux-x86_64.sh
-      > ```
-      >
-      > 最後一步驟「Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no] [no] >>> yes」
-      > 接著要啟動一個 bash shell，有兩個方式
-      >
-      > > 方式 1: 在原 terminal 輸入，`eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"`
-      >
-      > > 方式 2: 開啟一個新的 bash shell terminal
-      >
-      > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
-- 2.  用 conda 建立 virtual environment
-      > 切換到 project 工作目錄
-      >
-      > ```bash
-      > conda create -p env python==3.8 -y
-      > conda create --name env python==3.8 -y ## 另法
-      > # conda create -p env python=3.8 -y ## 當啟動 env 後，有時候 python 版本依然是最新版，非版本3.8
-      > ```
-      >
-      > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
-- 3.  安裝 aws CLI
-      > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
-      >
-      > ```bash
-      > curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      > unzip awscliv2.zip
-      > sudo ./aws/install
-      > ```
-      >
-      > 執行 `aws configuration` 看是否 aws CLI 安裝成功
-      >
-      > 設定 aws，執行 `aws configure`
-      >
-      > ```
-      > 輸入 AWS Access Key ID
-      > 輸入 AWS Secret Access Key
-      > Default region name 輸入: us-east-1
-      > Default output format[None]: 按下 Enter
-      > ```
 
-* Conda 安裝完後，不安裝 virtual environment，在 bash shell 中 python 版本就是 3.8.3
+  > ```bash
+  > mkdir .tmp
+  > cd .tmp
+  > wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+  > bash Anaconda3-2020.07-Linux-x86_64.sh
+  > ```
+  >
+  > 最後一步驟「Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no] [no] >>> yes」
+  > 接著要啟動一個 bash shell，有兩個方式
+  >
+  > > 方式 1: 在原 terminal 輸入，`eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"`
+  >
+  > > 方式 2: 開啟一個新的 bash shell terminal
+  >
+  > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
 
--
+* 2.  用 conda 建立 virtual environment
+
+  > 切換到 project 工作目錄
+  >
+  > ```bash
+  > conda create -p env python==3.8 -y
+  > conda create --name env python==3.8 -y ## 另法
+  > # conda create -p env python=3.8 -y ## 當啟動 env 後，有時候 python 版本依然是最新版，非版本3.8
+  > ```
+  >
+  > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
+
+* 3.  安裝 aws CLI
+
+  > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
+  >
+  > ```bash
+  > curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  > unzip awscliv2.zip
+  > sudo ./aws/install
+  > ```
+  >
+  > 執行 `aws configuration` 看是否 aws CLI 安裝成功
+  >
+  > 設定 aws，執行 `aws configure`
+  >
+  > ```
+  > 輸入 AWS Access Key ID
+  > 輸入 AWS Secret Access Key
+  > Default region name 輸入: us-east-1
+  > Default output format[None]: 按下 Enter
+  > ```
+
+- Conda 安裝完後，在新開啟的 terminal (bash shell) 中， python 版本就是 3.8.3 (不啟動 virtual environment)
 
 ### Replit (未能完成)
 
