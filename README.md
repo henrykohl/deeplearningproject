@@ -862,6 +862,19 @@ python main.py
 
 * Bento Demo 實做 Repo 與 notes ，參見 [My BentoML Demo -- README](https://github.com/henrykohl/bentoml-demo/)
 
+# Lecture 5 -- [Model Evaluation & Prediction Pipeline](https://www.youtube.com/watch?v=09aayk0s9B4)
+
+- Recap
+  > (1) Data Ingestion [S3] -> Artifact
+  >
+  > (2) Data transformation
+  >
+  > (3) Model training -- executed by Pytorch & CNN
+  >
+  > (4) Model Evaluation (focused by this lecture)
+  >
+  > (5) Model Pusher
+
 # 補充
 
 - `colabscript.ipynb` 可以實現將此 project (Lec 1 ~ Lec 3) 在 Colab 上運行（可使用 free GPU）
@@ -969,17 +982,17 @@ setup(
 
 ## 非常有用的 Saas Cloud dev environment for python
 
-> - Codespaces
+> - Codespaces (成功完成 Xray project)
 >
-> - Codesandbox
+> - Codesandbox (成功完成 Xray project)
 >
-> - Gitpod
+> - Gitpod (成功完成 Xray project)
 >
-> - Codeanywhere
+> - Codeanywhere (成功完成 Xray project)
 >
-> - Replit
+> - Replit (未能成功)
 >
-> - RunCode
+> - RunCode (未實做)
 
 ---
 
@@ -1064,7 +1077,7 @@ Default output format[None]: 按下 Enter
   >
   > 在 terminal 輸入 `conda --version` 或 `conda list` 檢測 conda 是否安裝成功
 
-* 2.  用 conda 建立 virtual environment
+- 2.  用 conda 建立 virtual environment
 
   > 切換到 project 工作目錄
   >
@@ -1076,7 +1089,7 @@ Default output format[None]: 按下 Enter
   >
   > 執行 `conda activate ./env` 看是否成功，再輸入 `python --version` 查看 env 環境下，安裝的 python 版本是否正確
 
-* 3.  安裝 aws CLI
+- 3.  安裝 aws CLI
 
   > 用 conda 啟動 env 後，在 .tmp 目錄下 執行
   >
@@ -1097,7 +1110,7 @@ Default output format[None]: 按下 Enter
   > Default output format[None]: 按下 Enter
   > ```
 
-- Conda 安裝完後，在新開啟的 terminal (bash shell) 中， python 版本就是 3.8.3 (不啟動 virtual environment)
+* Conda 安裝完後，在新開啟的 terminal (bash shell) 中， python 版本就是 3.8.3 (不啟動 virtual environment)
 
 ### Replit (未能完成)
 
@@ -1119,11 +1132,7 @@ conda activate ./env
 aws configuration # 選擇 awscli 或 awscli2 (在Replit中好似不能自行下載awscli後進行安裝)
 ```
 
-- 建立 `requirements.txt` 與 `setup.py`後，執行
-
-```bash
-pip install -r requirements.txt
-```
+- 建立 `requirements.txt` 與 `setup.py`後，執行 `pip install -r requirements.txt`
 
 但由於 storage limitation, 安裝到一半就出現空間不足的 Error，無法完全成功安裝所有 packages
 
@@ -1133,9 +1142,12 @@ pip install -r requirements.txt
 
 ---
 
-- 在 project 工作目錄 -- 建立 `requirements.txt` 與 `setup.py`
-
-* 在 project 工作目錄 -- 執行 `python main.py`
+- 在 project 工作目錄
+  > 建立 `requirements.txt` 與 `setup.py`
+  >
+  > 執行 `pip install -r requirements.txt`
+  >
+  > 執行 `python main.py`
 
 # Tech issues
 
