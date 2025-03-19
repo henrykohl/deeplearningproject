@@ -277,6 +277,8 @@ git push (-f) origin main
 
 * `init_setup.sh` : write our shell script just for automating the entire environment creation like this requirement installation
 
+---
+
 # Lecture 2 -- [Data Ingestion with S3](https://www.youtube.com/watch?v=3uXCAI3MOZ8)
 
 In local site,
@@ -394,7 +396,7 @@ git commit -m "code skelaton updated"
 git push -u origin main
 ```
 
-- 完成部分 `/Xray/pipeline/training_pipeline.py`
+- `/Xray/pipeline/training_pipeline.py` （主要）完成 start_data_ingestion
 
 ```python
 import sys
@@ -609,6 +611,8 @@ def start_data_ingestion() -> DataIngestionArtifact:
 start_data_ingestion()
 ```
 
+---
+
 # Lecture 3 -- [Data Transformation Components](https://www.youtube.com/watch?v=6-uZFeyfiCE)
 
 - End to End DL project Implementation
@@ -708,6 +712,8 @@ git push origin main
   >
   > 修改 `def run_pipeline`
 
+* `/Xray/pipeline/training_pipeline.py` 完成 start_data_transformation 的部分
+
 * 執行 data ingestion (Lecture 2) + data transformation (Lecture 3) 功能
 
 ```bash
@@ -715,6 +721,8 @@ python main.py
 ```
 
 - Git Commit: "data transformation added"
+
+---
 
 # Lecture 4 -- [Model Trainer & Bento ML](https://www.youtube.com/watch?v=Aahc28-f4hc)
 
@@ -858,9 +866,13 @@ python main.py
   >
   > 執行命令: `bentoml build`
 
+* `/Xray/pipeline/training_pipeline.py` 完成 start_model_trainer 的部分
+
 * Git Commit: "model trainer added" (1:28:00)
 
 * Bento Demo 實做 Repo 與 notes ，參見 [My BentoML Demo -- README](https://github.com/henrykohl/bentoml-demo/)
+
+---
 
 # Lecture 5 -- [Model Evaluation & Prediction Pipeline](https://www.youtube.com/watch?v=09aayk0s9B4)
 
@@ -874,6 +886,22 @@ python main.py
   > (4) Model Evaluation (focused by this lecture)
   >
   > (5) Model Pusher
+
+* [Project Architecture](https://app.whiteboard.microsoft.com/me/whiteboards/3af4b83f-c715-41cd-82de-a8cd5efde3b3)
+
+* [CNN Architecture]() (1:37:25 )
+
+- 完整完成 `/experiment/Experiment.ipynb`
+
+- 完整完成 `/Xray/components/model_evaluation.py`
+
+* `/Xray/entity/config_entity.py` (新增 class ModelEvaluationConfig 的部分)
+
+* `/Xray/entity/artifact_entity.py` (新增 class ModelEvaluationArtifact 的部分)
+
+* `/Xray/pipeline/training_pipeline.py` 完成 start_model_evaluation 的部分
+
+---
 
 # 補充
 
