@@ -14,6 +14,8 @@ BentoML demo repo: https://github.com/entbappy/bentoml-demo
 
 [GitHub -- for Lecture 3](https://github.com/entbappy/Lung-Xray-Classification/)
 
+---
+
 # Lecture 1 -- [Deep Learning Essentials](https://www.youtube.com/watch?v=essGb4QDXEU)
 
 ## Create a new respository
@@ -44,8 +46,6 @@ git pull origin main
 ```
 
 - In my case: using `Codespaces`, SKIP the above GIT operations
-
---
 
 ## Implementation
 
