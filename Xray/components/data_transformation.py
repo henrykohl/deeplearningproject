@@ -123,11 +123,11 @@ class DataTransformation:
                 "Entered the initiate_data_transformation method of Data transformation class"
             )
 
-            train_transform: transforms.Compose = self.transforming_training_data()
+            train_transform: transforms.Compose = self.transforming_training_data() ## training data 的轉型模式
 
-            test_transform: transforms.Compose = self.transforming_testing_data()
+            test_transform: transforms.Compose = self.transforming_testing_data() ## test data 的轉型模式
 
-            os.makedirs(self.data_transformation_config.artifact_dir, exist_ok=True)
+            os.makedirs(self.data_transformation_config.artifact_dir, exist_ok=True) ## 建立 data_transformation 資料夾
 
             joblib.dump(
                 train_transform, self.data_transformation_config.train_transforms_file

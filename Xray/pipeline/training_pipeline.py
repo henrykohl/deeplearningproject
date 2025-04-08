@@ -85,9 +85,10 @@ class TrainPipeline:
                 data_transformation_config=self.data_transformation_config,
             )
 
+            ## 包含四個單元 -- training DataLoader、test DataLoader、training data 的轉型模式、test data 的轉型模式
             data_transformation_artifact = (
                 data_transformation.initiate_data_transformation()
-            )
+            )   
 
             logging.info(
                 "Exited the start_data_transformation method of TrainPipeline class"

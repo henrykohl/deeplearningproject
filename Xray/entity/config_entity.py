@@ -5,9 +5,8 @@ from torch import device
 
 from Xray.constant.training_pipeline import *
 
-
-@dataclass
-class DataIngestionConfig:
+@dataclass # Lec 2
+class DataIngestionConfig: 
     def __init__(self):
         self.s3_data_folder: str = S3_DATA_FOLDER
 
@@ -23,8 +22,8 @@ class DataIngestionConfig:
 
         self.test_data_path: str = os.path.join(self.data_path, "test")
 
-@dataclass
-class DataTransformationConfig:
+@dataclass # Lec 3
+class DataTransformationConfig: 
     def __init__(self):
         self.color_jitter_transforms: dict = {
             "brightness": BRIGHTNESS,
@@ -62,8 +61,8 @@ class DataTransformationConfig:
             self.artifact_dir, TEST_TRANSFORMS_FILE
         )
 
-@dataclass
-class ModelTrainerConfig:
+@dataclass # Lec 4
+class ModelTrainerConfig: 
     def __init__(self):
         self.artifact_dir: int = os.path.join(ARTIFACT_DIR, TIMESTAMP, "model_training") ## 應該是 str
 
@@ -83,8 +82,8 @@ class ModelTrainerConfig:
 
         self.device: device = DEVICE
 
-@dataclass
-class ModelEvaluationConfig:
+@dataclass # Lec 5
+class ModelEvaluationConfig: 
     def __init__(self):
         self.device: device = DEVICE
 

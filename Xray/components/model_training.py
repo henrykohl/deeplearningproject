@@ -53,7 +53,7 @@ class ModelTrainer:
         try:
             self.model.train()
 
-            pbar = tqdm(self.data_transformation_artifact.transformed_train_object)
+            pbar = tqdm(self.data_transformation_artifact.transformed_train_object) ## tqdm 套在 DataLoader
 
             correct: int = 0
 
@@ -194,7 +194,7 @@ class ModelTrainer:
 
                 self.train(optimizer=optimizer)
 
-                optimizer.step()
+                # optimizer.step() # 應該是不需要 (參考experiment.ipynb)
 
                 scheduler.step()
 
