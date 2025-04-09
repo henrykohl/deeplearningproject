@@ -179,7 +179,7 @@ class ModelTrainer:
                 "Entered the initiate_model_trainer method of Model trainer class"
             )
 
-            model: Module = self.model.to(self.model_trainer_config.device)
+            model: Module = self.model.to(self.model_trainer_config.device) ## ModelTrainerConfig.device
 
             optimizer: Optimizer = torch.optim.SGD(
                 model.parameters(), **self.model_trainer_config.optimizer_params
@@ -200,12 +200,15 @@ class ModelTrainer:
 
                 self.test()
 
-            os.makedirs(self.model_trainer_config.artifact_dir, exist_ok=True)
+            os.makedirs(self.model_trainer_config.artifact_dir, exist_ok=True) 
+            ## 「ARTIFACT_DIR + TIMESTAMP + "model_training"」
 
-            torch.save(model, self.model_trainer_config.trained_model_path)
+            torch.save(model, self.model_trainer_config.trained_model_path) 
+            ## 「ARTIFACT_DIR + TIMESTAMP + "model_training" + TRAINED_MODEL_NAME」
 
             train_transforms_obj = joblib.load(
                 self.data_transformation_artifact.train_transform_file_path
+                ## DataTransformationArtifact.train_transform_file_path
             )
 
             bentoml.pytorch.save_model(
@@ -213,11 +216,13 @@ class ModelTrainer:
                 model=model,
                 custom_objects={
                     self.model_trainer_config.train_transforms_key: train_transforms_obj
+                    ## "xray_train_transforms": DataTransformationArtifact.train_transform_file_path
                 },
             )
 
             model_trainer_artifact: ModelTrainerArtifact = ModelTrainerArtifact(
                 trained_model_path=self.model_trainer_config.trained_model_path
+                ## 「ARTIFACT_DIR + TIMESTAMP + "model_training" + TRAINED_MODEL_NAME」
             )
 
             logging.info(
