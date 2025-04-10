@@ -33,7 +33,7 @@ class ModelEvaluation:
 
         self.model_trainer_artifact = model_trainer_artifact
 
-    def configuration(self) -> Tuple[DataLoader, Module, float, Optimizer]:
+    def configuration(self) -> Tuple[DataLoader, Module, float, Optimizer]: ## 應該是 [DataLoader, Module, CrossEntropyLoss]
         logging.info("Entered the configuration method of Model evaluation class")
 
         try:
@@ -41,7 +41,7 @@ class ModelEvaluation:
                 self.data_transformation_artifact.transformed_test_object
             )
 
-            model: Module = Net()
+            # model: Module = Net() 此是多餘的
 
             model: Module = torch.load(self.model_trainer_artifact.trained_model_path)
 
