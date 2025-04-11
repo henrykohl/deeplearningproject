@@ -126,9 +126,9 @@ class TrainPipeline:
 
         try:
             model_evaluation = ModelEvaluation(
-                data_transformation_artifact=data_transformation_artifact,
-                model_evaluation_config=self.model_evaluation_config,
-                model_trainer_artifact=model_trainer_artifact,
+                data_transformation_artifact=data_transformation_artifact, # 來自 Lec 3
+                model_trainer_artifact=model_trainer_artifact, # 來自 Lec 4
+                model_evaluation_config=self.model_evaluation_config, 
             )
 
             model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
@@ -161,25 +161,26 @@ class TrainPipeline:
         logging.info("Entered the run_pipeline method of TrainPipeline class")
 
         try:
-            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()      # Lec 2
-            data_transformation_artifact: DataTransformationArtifact = (                      # Lec 3
-                self.start_data_transformation(
-                    data_ingestion_artifact=data_ingestion_artifact
-                )
-            )
-
-
-            model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(          # Lec 4
-                data_transformation_artifact=data_transformation_artifact
+            # Lec 2
+            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()      
+            
+            # Lec 3
+            data_transformation_artifact: DataTransformationArtifact =  self.start_data_transformation( 
+                data_ingestion_artifact=data_ingestion_artifact ## 來自 Lec 2
+            )                     
+                
+            # Lec 4
+            model_trainer_artifact: ModelTrainerArtifact = self.start_model_trainer(         
+                data_transformation_artifact=data_transformation_artifact ## 來自 Lec 3
             )
             
-            model_evaluation_artifact: ModelEvaluationArtifact = (                            # Lec 5
-                self.start_model_evaluation(
-                    model_trainer_artifact=model_trainer_artifact,
-                    data_transformation_artifact=data_transformation_artifact,
-                )
+            # Lec 5
+            model_evaluation_artifact: ModelEvaluationArtifact = self.start_model_evaluation(
+                model_trainer_artifact=model_trainer_artifact, ## 來自 Lec 4
+                data_transformation_artifact=data_transformation_artifact, ## 來自 Lec 3
             )
             
+            # Lec 6
             # model_pusher_artifact = self.start_model_pusher()
 
             logging.info("Exited the run_pipeline method of TrainPipeline class")
