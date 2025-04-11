@@ -902,6 +902,20 @@ python main.py
 * `/Xray/pipeline/training_pipeline.py` 完成 start_model_evaluation 的部分
 
 ---
+# Lecture 6 -- [Evaluate and Deploy Deep Learning Models to the Cloud](https://www.youtube.com/watch?v=jk_YAsI9z5w)
+
+* Recap
+
+> <pre>
+> |Data|: images -- 1. NORMAL 2. PNEUMONIA \
+>    |__Training (*訓) \
+>    |__Validation/testing (*測)
+</pre>
+
+
+> |Data Ingestion| --> |Data Transformation| --> |Model Train|(*訓) --> |Model evaluation|(*測) --> |Model Pusher|
+
+---
 
 # 補充
 
