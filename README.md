@@ -915,6 +915,18 @@ python main.py
 
 > |Data Ingestion| --> |Data Transformation| --> |Model Train|(*訓) --> |Model evaluation|(*測) --> |Model Pusher|
 
+
+* 完整完成 `/Xray/components/model_pusher.py` 
+
+* 建立完成 `/test.py`
+>  執行 `python test.py` (requirements_dev.txt 必要存在)
+
+* 完整完成 `/bentofile.yaml`
+
+* AWS ECR （1:10）
+
+* 完整完成 `/Xray/ml/model/model_service.py`
+
 ---
 
 # 補充
