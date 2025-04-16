@@ -8,7 +8,7 @@ from PIL import Image as PILImage
 
 from Xray.constant.training_pipeline import *
 
-bento_model = bentoml.pytorch.get(BENTOML_MODEL_NAME)
+bento_model = bentoml.pytorch.get(BENTOML_MODEL_NAME) # A tag with a format name:version
 
 runner = bento_model.to_runner()
 
@@ -16,12 +16,12 @@ svc = bentoml.Service(name=BENTOML_SERVICE_NAME, runners=[runner])
 
 
 @svc.api(input=Image(allowed_mime_types=["image/jpeg"]), output=Text())
-async def predict(img):
+async def predict(img): # img 應該是 PIL.JpegImagePlugin.JpegImageFile 類型
     b = io.BytesIO()
 
     img.save(b, "jpeg")
 
-    im_bytes = b.getvalue()
+    im_bytes = b.getvalue() # im_bytes 是 bytes 類型
 
     my_transforms = bento_model.custom_objects.get(TRAIN_TRANSFORMS_KEY)
 

@@ -923,9 +923,13 @@ python main.py
 
 * 完整完成 `/bentofile.yaml`
 
-* AWS ECR （1:10）
+* AWS ECR （1:10:00）
 
-* 完整完成 `/Xray/ml/model/model_service.py`
+* 建立 `/Xray/ml/model/model_service.py`
+
+* BentoML 教學 (1:14:10)
+
+* 解說 `/Xray/ml/model/model_service.py`
 
 ---
 
