@@ -8,7 +8,7 @@ from PIL import Image as PILImage
 
 from Xray.constant.training_pipeline import *
 
-bento_model = bentoml.pytorch.get(BENTOML_MODEL_NAME) # A tag with a format name:version
+bento_model = bentoml.pytorch.get(BENTOML_MODEL_NAME) # returns A Model
 
 runner = bento_model.to_runner()
 
