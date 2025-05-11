@@ -904,7 +904,7 @@ python main.py
 ---
 # Lecture 6 -- [Evaluate and Deploy Deep Learning Models to the Cloud](https://www.youtube.com/watch?v=jk_YAsI9z5w)
 
-* Recap
+* Recap (20:15)
 
 > <pre>
 > |Data|: images -- 1. NORMAL 2. PNEUMONIA \
@@ -915,6 +915,7 @@ python main.py
 
 > |Data Ingestion| --> |Data Transformation| --> |Model Train|(*訓) --> |Model evaluation|(*測) --> |Model Pusher|
 
+* 覆盤 `/Xray/components/model_evaluation.py` (30:50)
 
 * 完整完成 `/Xray/components/model_pusher.py` 
 
