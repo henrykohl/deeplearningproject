@@ -941,11 +941,38 @@ python main.py
 > [BentoML](https://bentoml.com/)
 
 * 解說 `/Xray/ml/model/model_service.py` (1:21:00)
-> 建立所需的 API
+
+> * 建立所需的 API
 
 * 解說 `/bentofile.yaml` (1:27:50)
 
 * `/Xray/pipeline/training_pipeline.py` 完成 start_model_pusher 的部分
+
+* 運行 `main.py` (1:32:50)
+
+> - 在 terminal 執行 `source activate ./venv` 以進入 virtual environment
+>
+> - 執行 `python main.py` -- Lecture 使用 bentoml 1.0.10 或 1.0.25 都會產生 KeyError: 'name' 的錯誤
+
+* 查詢 PyPi BentoML 相關資訊 (1:37:00) 
+
+* [bug: KeyError: 'name'](https://github.com/bentoml/BentoML/issues/4500)(1:40:55)
+
+* 用 Streamlit 取代 BentoML (1:47:30)
+> - Github repository -- [Xray-lung-classifier](https://github.com/sunnysavita10/Xray-lung-classifier)
+>
+> 1. 檢視 `/xray/components/model_pusher.py`
+>
+> > * 訓練後模型的路徑 `/model/model.pt`
+> 
+> > * just upload MODEL file to s3
+>
+> 2. 檢視 `/app.py`
+>
+> 3. 檢視 `/xray/cloud_storage/s3_ops.py`
+> > * 使用 boto3 來連接 s3
+
+
 
 ---
 
