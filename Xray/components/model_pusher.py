@@ -17,7 +17,7 @@ class ModelPusher:
         try:
             logging.info("Building the bento from bentofile.yaml")
 
-            os.system("bentoml build")
+            os.system("bentoml build") # 
 
             logging.info("Built the bento from bentofile.yaml")
 
@@ -26,6 +26,7 @@ class ModelPusher:
             os.system(
                 f"bentoml containerize {self.model_pusher_config.bentoml_service_name}:latest -t 136566696263.dkr.ecr.us-east-1.amazonaws.com/{self.model_pusher_config.bentoml_ecr_image}:latest"
             )
+            # 136566696263.dkr.ecr.us-east-1.amazonaws.com 來自 AWS -- ECR 所建立的 repository
 
             logging.info("Created docker image for bento")
 
@@ -42,6 +43,7 @@ class ModelPusher:
             os.system(
                 f"docker push 136566696263.dkr.ecr.us-east-1.amazonaws.com/{self.model_pusher_config.bentoml_ecr_image}:latest"
             )
+            # 136566696263.dkr.ecr.us-east-1.amazonaws.com 來自 AWS -- ECR 所建立的 repository
 
             logging.info("Pushed bento image to ECR")
 

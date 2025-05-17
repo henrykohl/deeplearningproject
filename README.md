@@ -915,22 +915,37 @@ python main.py
 
 > |Data Ingestion| --> |Data Transformation| --> |Model Train|(*訓) --> |Model evaluation|(*測) --> |Model Pusher|
 
-* 覆盤 `/Xray/components/model_evaluation.py` (30:50)
+* 復盤 `/Xray/components/model_evaluation.py` (30:50)
 
-* 完整完成 `/Xray/components/model_pusher.py` 
+* 復盤 `/Xray/components/model_training.py`
+> 特別關注 **bentoml** 的部分
 
-* 建立完成 `/test.py`
+* 完整完成 `/Xray/components/model_pusher.py` (1:01:00)
+> (1:02:34) 開始解說
+
+* 建立完成 `/test.py` (1:06:55)
+
 >  執行 `python test.py` (requirements_dev.txt 必要存在)
 
 * 完整完成 `/bentofile.yaml`
 
 * AWS ECR （1:10:00）
 
+>  在 AWS 的 ECR 建立一個 repository: `xray_bento_image`
+
 * 建立 `/Xray/ml/model/model_service.py`
 
 * BentoML 教學 (1:14:10)
+> [BentoML github](https://github.com/bentoml/BentoML)
+>
+> [BentoML](https://bentoml.com/)
 
-* 解說 `/Xray/ml/model/model_service.py`
+* 解說 `/Xray/ml/model/model_service.py` (1:21:00)
+> 建立所需的 API
+
+* 解說 `/bentofile.yaml` (1:27:50)
+
+* `/Xray/pipeline/training_pipeline.py` 完成 start_model_pusher 的部分
 
 ---
 
