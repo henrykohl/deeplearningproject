@@ -971,8 +971,46 @@ python main.py
 >
 > 3. 檢視 `/xray/cloud_storage/s3_ops.py`
 > > * 使用 boto3 來連接 s3
+>
+> 4. 建立 virtual environment: `conda create -p venv python=3.8 -y`
+>
+> 5. 執行 `source activate ./venv`
+>
+> 6. 執行 `pip install -r requirments.txt`
+>
+> 7. 執行 `streamlit run app.py`，後開啟 web APP (2:00:50)
+>
+> 8. google 一張 'pneumonia lungs x ray' 的 jpeg 圖，將其下載，
+>
+> 9. 將 jpeg 檔上傳至 web APP -- 檔案將存到 `/images/input.jpeg`
 
+* Project saved in Github [deeplearningproject](https://github.com/henrykohl/deeplearningproject)
+> * `git remote -v`
+>
+> * `git add .`
+>
+> * `git commit -m "latest changes: pusher evaluation and bentoml"`
+>
+> * `git push -u origin main`
 
+* Project saved in Github [deeplearningupdatedwithstreamlit]
+> * Create a new repository -- Repository name: `eeplearningupdatedwithstreamlit`
+>
+> * `Public` --> `save`
+>
+> * `git remote -v` --> 發現 no repository
+>
+> * `rm -rf .git`
+>
+> * `git init`
+>
+> * `git add .`
+>
+> * `git commit -m "updated code"`
+>
+> * `git remote add origin https://github.com/ehnrykohl/deeplearningupdatedwithstreamlit`
+>
+> * `git push -u origin main`
 
 ---
 
