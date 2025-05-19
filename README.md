@@ -104,7 +104,7 @@ git pull origin main
 
 ## Implementation (57:00)
 
-- `/.github` : going to write it on my entire configuration inside this folder. going to keep my entire workflows related configuration (1:07:08)
+- `/.github` : going to write it on my entire configuration inside this folder. Going to keep my entire workflows related configuration (1:07:08)
   > `/workflows` : the continuous integration related to this continuous deployment (1:07:40)
   >
   > > `main.yaml` : write my all the configuration in this file (1:07:49)
@@ -156,7 +156,7 @@ git pull origin main
   >
   > > `__init__.py` (1:09:22)
 
-- `requirements.txt` (1:06:25)
+- `requirements.txt` : for production whenever we are going to deploy it so well. (1:06:25)
 
 - `setup.py` (1:06:34)
   whenever you are importing your file inside your component, you can install it in your virtual environment as a package for that. this setup.py will help you.
@@ -180,13 +180,13 @@ git push origin main
 - `/experiment` (1:19:30)
   > `experiment.ipynb` (1:19:40)
 
-* `tox.ini` : do one thing like test our case (check the MLOps Lecture) (1:20:23)
+* `tox.ini` : do one thing like test our case. write down the configuration over here. (check the MLOps Lecture) (1:20:23)
 
-* `setup.cfg` : publish this one as your package so you can mention the configuration inside the setup.cfg. (1:21:30)
+* `setup.cfg` : if you want to  publish this one as your package so you can mention the configuration inside the setup.cfg. (1:21:30)
 
-* `requirements_dev.txt` : write down the specific library for development environment (1:21:50)
+* `requirements_dev.txt` : write down the specific library just for development environment (1:21:50)
 
-* `init_setup.sh` : write down our Shell Script for the automating the entire thing environment creation or like environment installation and all. We can write down each and every command over here inside this file. (1:22:55)
+* `init_setup.sh` : write down our Shell Script just for the automating the entire thing environment creation or like this environment installation and all. We can write down each and every command over here inside this file. (1:22:55)
 
 * post the recent changes in Github (1:23:25)
 ```bash
@@ -197,7 +197,7 @@ git push -u origin main
 
 ---
 
-## Create a virtual environment (1:28:30)
+## Create a virtual environment and Activate (1:28:30)
 
 ```bash
 conda create -p env python=3.8 -y
@@ -206,30 +206,48 @@ conda create -p env python=3.8 -y
 source activate ./env
 ```
 
-- 完成 `requirements.txt`
+- 完成 `requirements.txt` (1:31:10)
 
-> pytest : write down different cases and check into different environment
->
-> tox : provide you the environment and by using pytest write down the different use cases.
->
-> flake8 : for linting
->
-> mypy : for linting
->
-> black : for linting
->
-> -e . : setup.py will be executed. this dot is for this setup.py. `e` means execute. `.` means what you need to find out the package in the current directory.
-> dvc : do that data management by using this DVC
->
-> mlflow: check each and every experiment by using this mlflow
->
-> ipykernel
->
-> pandas
->
-> numpy
->
-> seaborn
+```sh
+bentoml # used in this project
+torchvision # download the pytorch module into the virtual environment
+joblib
+pip-chill # automatically it will you a specific version (like some specific version of a torch widget) -
+# - match the version with the current python version to the specific library
+tqdm # get the progress bar whenever you want the progress bar regarding to any sort of a process
+wincertstore # when you are going to connect with the server now so the SSL is required
+
+-e
+```
+
+- 完成 `requirements_dev.txt` (1:35:18)
+
+```sh
+bentoml 
+torchvision 
+joblib
+pip-chill 
+tqdm 
+wincertstore 
+
+dvc # do that data management by using this DVC
+mlflow # check each and every experiment by using this mlflow
+ipykernel
+pandas
+numpy
+seaborn
+
+pytest==7.1.3 # write down different cases and check into different environment
+tox==3.25.1 # provide you the environment and by using pytest write down the different use cases.
+flake8==5.0.4 # for linting
+mypy==0.971 # for linting
+black==22.8.0 for linting
+
+-e . # setup.py will be executed. this dot is for this setup.py. `e` means execute. `.` means what you need to find out the package in the current directory. 
+# 如果 setup.py 是空的或不存在, `-e .` 要 mask 掉)
+```
+
+* (1:39:15)
 
 ```bash
 pip install -r requirements_dev.txt
@@ -249,38 +267,42 @@ git push (-f) origin main
 
 ---
 
-- 完成 `setup.py`
+- 完成 `setup.py` (1:49:00)
 
+```python
+from setuptools import find_packages,setup
+from typing import List
+
+HYPEN_E_DOT='-e .'
+
+def get_requirements(file_path:str)->List[str]:
+    requirements=[]
+    with open(file_path) as file_obj:
+        requirements=file_obj.readlines()
+        requirements=[req.replace("\n","") for req in requirements]
+
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+
+    return requirements
+
+
+setup(
+name="Xray",
+version="0.0.1",
+author="henry kohl",
+author_email="u860218@gmail.com",
+install_requires=get_requirements(r"//workspaces//deeplearningproject//requirements_dev.txt"),
+package=find_packages()
+)
 ```
+
+
+```bash
 git add .
 git commit -m "setup file updated"
 git push (-f) origin main
 ```
-
-
-
-## Description
-
-- `.github` : going to write it on my entire configuration inside this folder. Going to keep our entire workflows related to configuration.
-  > `workflows` : write our all the configuration in this file.
-  >
-  > `ci.yaml` :
-
-* `bentofile.yaml`: write down the entire configuration related to the Bento yaml only.
-
-* `tox.ini` : like test our cases. write down the configuration over here.
-
-* `setup.cfg` : if you want to publish this one as a package, you can mention the confiuration inside this setup.cfg.
-
-* `requirements_dev.txt` : write down the specific library just for development environment.
-
-  > `dvc` -- do data management
-  >
-  > `mlflow` -- track each and every experiment by using this mlflow
-
-* `requirements.txt` : for production whenever we are going to deploy it so well.
-
-* `init_setup.sh` : write our shell script just for automating the entire environment creation like this requirement installation
 
 ---
 
@@ -304,7 +326,7 @@ pip install -r requirements_dev.txt
 
 注意 -- `requirements_dev.txt` 此時與 Lecture 1 中的 `requirements_dev.txt` 不同在於 六個 packages 需要指定版本。此 Lecture 的操作是在 Local 端~ 而 Lecture 1 是在 iNeuron 上 (本實做在 Codespace)。
 
-```
+```sh
 bentoml==1.0.25
 #bentoml==1.0.10
 joblib==1.2.0
