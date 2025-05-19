@@ -217,7 +217,7 @@ pip-chill # automatically it will you a specific version (like some specific ver
 tqdm # get the progress bar whenever you want the progress bar regarding to any sort of a process
 wincertstore # when you are going to connect with the server now so the SSL is required
 
--e
+-e .
 ```
 
 - 完成 `requirements_dev.txt` (1:35:18)
@@ -308,41 +308,41 @@ git push (-f) origin main
 
 # Lecture 2 -- [Data Ingestion with S3](https://www.youtube.com/watch?v=3uXCAI3MOZ8)
 
-In local site,
+* In local site,
 
-> ```
+> ```bash
 > git clone https://github.com/henrykohl/deeplearningproject.git
 > ```
 
-`Xray` 中 `components`, `entity`, `pipeline` 下都需要有 `__init__.py`
+* `Xray` 中 `components`, `entity`, `pipeline` 下都需要有 `__init__.py`
 
-在此 Lecture 實做時，安裝 packages 建立 virtual environment，會使用到 setup.py (此時不是空白)，所以 `requirements_dev.txt`的 `-e .` 要存在才可
+* 在此 Lecture 實做時，安裝 packages 建立 virtual environment，會使用到 setup.py (此時不是空白)，所以 `requirements_dev.txt`的 `-e .` 要存在才可
 
-```
-conda create -p venv python=3.8 -y
-conda activate venv的途徑
-pip install -r requirements_dev.txt
-```
+> ```bash
+> conda create -p venv python=3.8 -y
+> conda activate venv的途徑
+> pip install -r requirements_dev.txt
+> ```
 
-注意 -- `requirements_dev.txt` 此時與 Lecture 1 中的 `requirements_dev.txt` 不同在於 六個 packages 需要指定版本。此 Lecture 的操作是在 Local 端~ 而 Lecture 1 是在 iNeuron 上 (本實做在 Codespace)。
+* 注意 -- `requirements_dev.txt` 此時與 Lecture 1 中的 `requirements_dev.txt` 不同在於 六個 packages 需要指定版本。此 Lecture 的操作是在 Local 端~ 而 Lecture 1 是在 iNeuron 上 (本實做在 Codespace)。
 
-```sh
-bentoml==1.0.25
-#bentoml==1.0.10
-joblib==1.2.0
-pip-chill==1.0.1
-torchvision==0.14.1
-tqdm==4.64.1
-wincertstore==0.2
-```
+> ```sh
+> bentoml==1.0.25
+> # bentoml==1.0.10
+> joblib==1.2.0
+> pip-chill==1.0.1
+> torchvision==0.14.1
+> tqdm==4.64.1
+> wincertstore==0.2
+>```
 
-安裝完畢，可用 `pip list` 查看， **Xray** 的版本顯示為 `0.0.1`
+* 安裝完畢，可用 `pip list` 查看， **Xray** 的版本顯示為 `0.0.1`
 
-```
-git add .
-git commit -m "requirement updated"
-git push -m origin main
-```
+> ``` bash
+> git add .
+> git commit -m "requirement updated"
+> git push -m origin main
+> ```
 
 ## Implementation
 
@@ -373,7 +373,7 @@ class S3Operation:
             raise XRayException(e, sys)
 ```
 
-- 部分完成 `/Xray/components/data_ingestion.py`
+* 部分完成 `/Xray/components/data_ingestion.py`
 
 ```python
 import sys
@@ -417,7 +417,7 @@ class DataIngestion:
 
 - `/Xray/entity/artifact_entity.py` 完成 class DataIngestionArtifact 的部分
 
-```
+```bash
 git add .
 git commit -m "code skelaton updated"
 git push -u origin main
