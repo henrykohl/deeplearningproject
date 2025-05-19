@@ -18,7 +18,7 @@ BentoML demo repo: https://github.com/entbappy/bentoml-demo
 
 # Lecture 1 -- [Deep Learning Essentials](https://www.youtube.com/watch?v=essGb4QDXEU)
 
-## Create a new respository
+## Create a new respository (26:30)
 
 - Respository name\* : `deeplearningproject`
 
@@ -32,9 +32,10 @@ BentoML demo repo: https://github.com/entbappy/bentoml-demo
 
 - Choose a license : `License: MIT License`
 
-## Open a VSCode
+## Open a a terminal in VSCode (33:00)
 
-```
+```bash
+ls -a
 # rm -rf .git ## if exists
 
 git init
@@ -47,70 +48,125 @@ git pull origin main
 
 - In my case: using `Codespaces`, SKIP the above GIT operations
 
-## Implementation
+## MLOPS (42:30)
 
-- `/.github` : going to write it on my entire configuration inside this folder. going to keep my entire workflows related configuration
-  > `/workflows` : the continuous integration related to this continuous deployment
-  >
-  > > `main.yaml` : write my all the configuration in this file
-  > >
-  > > `ci.yaml` :
+- ML
 
-* `/Xray`
-  > `/cloud_storage`: all related to the cloud, to the S3
+  > DVC
   >
-  > > `__init__.py`
-  > >
-  > > `s3_operation.py`
+  > MLflow
   >
-  > `/components`: data ingestion, data transformation, pre-processing, model training, model pusher
+  > Airflow
   >
-  > > `data_ingestion.py`
-  >
-  > > `data_transformation.py`
-  > >
-  > > `model_evaluation.py`
-  > >
-  > > `model_training.py`
-  > >
-  > > `model_pusher.py`
-  >
-  > `/entity` : all the configuration, (entity) representing component only
-  >
-  > > `artifact_entity.py`
-  > >
-  > > `config_entity.py`
-  >
-  > `/pipeline`
-  >
-  > > `training_pipeline.py`
-  >
-  > `logger.py`
-  >
-  > `exception.py`
-  >
-  > `__init__.py`: recognize this folder as a package
+  > Azure
 
-- `/test`: those test cases we will write down inside the test folder
-
-  > `/integration`
+- DL
+  > Vision -- CNN
   >
-  > > `__init__.py`
-  >
-  > `/unittest`
-  >
-  > > `__init__.py`
+  > NLP
 
-- `requirements.txt`
+## Complete infrastructure (48:25)
 
-- `setup.py`
+- Training pipeline
+
+  > Data ingestion (S3)
+  >
+  > Processing
+  >
+  > Model training
+  >
+  > Push Model
+  >
+  > Model evaluation
+
+- Prediction pipeline
+
+## Content in the project (50:45)
+
+1. DVC
+
+2. MLFLOW
+
+3. Bentoml
+
+4. Docker
+
+5. Testcases
+
+- AWS
+  > 1. S3
+  >
+  > 2. ECR
+  >
+  > 3. EC2
+  >
+  > 4. APP runner
+
+## Implementation (57:00)
+
+- `/.github` : going to write it on my entire configuration inside this folder. going to keep my entire workflows related configuration (1:07:08)
+  > `/workflows` : the continuous integration related to this continuous deployment (1:07:40)
+  >
+  > > `main.yaml` : write my all the configuration in this file (1:07:49)
+  > >
+  > > `ci.yaml`  (1:08:04)
+
+* `/Xray` (58:00)
+  > `/cloud_storage`: all related to the cloud, to the S3 (58:25)
+  >
+  > > `__init__.py` (1:01:10)
+  > >
+  > > `s3_operation.py` (1:00:55)
+  >
+  > `/components`: data ingestion, data transformation, pre-processing, model training, model pusher (58:50)
+  >
+  > > `data_ingestion.py` (1:01:30)
+  >
+  > > `data_transformation.py` (1:01:45)
+  > >
+  > > `model_evaluation.py` (1:02:20)
+  > >
+  > > `model_training.py` (1:02:00)
+  > >
+  > > `model_pusher.py` (1:02:35)
+  >
+  > `/entity` : all the configuration, (entity) representing component only (59:10)
+  >
+  > > `artifact_entity.py` (1:05:25)
+  > >
+  > > `config_entity.py` (1:05:15)
+  >
+  > `/pipeline` (59:30)
+  >
+  > > `training_pipeline.py` (1:05:50)
+  >
+  > `logger.py` (59:50)
+  >
+  > `exception.py` (59:55)
+  >
+  > `__init__.py`: recognize this folder as a package (1:10:15)
+
+- `/test`: those test cases we will write down inside the test folder (1:08:40)
+
+  > `/integrationtest` (1:08:59)
+  >
+  > > `__init__.py` (1:09:10)
+  >
+  > `/unittest` (1:08:48)
+  >
+  > > `__init__.py` (1:09:22)
+
+- `requirements.txt` (1:06:25)
+
+- `setup.py` (1:06:34)
   whenever you are importing your file inside your component, you can install it in your virtual environment as a package for that. this setup.py will help you.
 
 * `bentofile.yaml` : write down the entire configuration related to the Bento ml only
 
-write down the configuration in the form of key and value.
+write down the configuration in the form of key and value. (1:09:56)
 
-```
+* push this complete folder to Github (1:10:42)
+```bash
 git add .
 git config --global user.name "使用者名稱" (useless)
 git config --global user.email "使用者電子郵件" (useless)
@@ -121,18 +177,19 @@ git push origin main
 
 ---
 
-- `/experiment`
-  > `experiment.ipynb`
+- `/experiment` (1:19:30)
+  > `experiment.ipynb` (1:19:40)
 
-* `tox.ini` : do one thing like test our case (check the MLOps Lecture)
+* `tox.ini` : do one thing like test our case (check the MLOps Lecture) (1:20:23)
 
-* `setup.cfg` : publish this one as your package so you can mention the configuration inside the setup.cfg.
+* `setup.cfg` : publish this one as your package so you can mention the configuration inside the setup.cfg. (1:21:30)
 
-* `requirements_dev.txt` : write down the specific library for development environment
+* `requirements_dev.txt` : write down the specific library for development environment (1:21:50)
 
-* `init_setup.sh` : write down our Shell Script for the automating the entire thing environment creation or like environment installation and all. We can write down each and every command over here inside this file.
+* `init_setup.sh` : write down our Shell Script for the automating the entire thing environment creation or like environment installation and all. We can write down each and every command over here inside this file. (1:22:55)
 
-```
+* post the recent changes in Github (1:23:25)
+```bash
 git add .
 git commit -m "more file added"
 git push -u origin main
@@ -140,9 +197,9 @@ git push -u origin main
 
 ---
 
-## Create a virtual environment
+## Create a virtual environment (1:28:30)
 
-```
+```bash
 conda create -p env python=3.8 -y
 #不要使用`-n`, it's not going to create in your present directory it will create in a default location
 # `-p`: path, currect idrectory
@@ -174,7 +231,7 @@ source activate ./env
 >
 > seaborn
 
-```
+```bash
 pip install -r requirements_dev.txt
 # `-e .` 要 mask 掉，因為 setup.py 此時為空
 
@@ -200,59 +257,7 @@ git commit -m "setup file updated"
 git push (-f) origin main
 ```
 
-## MLOPS
 
-- ML
-
-  > DVC
-  >
-  > MLflow
-  >
-  > Airflow
-  >
-  > Azure
-
-- DL
-  > Vision -- CNN
-  >
-  > NLP
-
-## Complete infrastructure
-
-- Training pipeline
-
-  > Data ingestion (S3)
-  >
-  > Processing
-  >
-  > Model training
-  >
-  > Push Model
-  >
-  > Model evaluation
-
-- Prediction pipeline
-
-## Content in the project
-
-1. DVC
-
-2. MLFLOW
-
-3. Bentoml
-
-4. Docker
-
-5. Testcases
-
-- AWS
-  > 1. S3
-  >
-  > 2. ECR
-  >
-  > 3. EC2
-  >
-  > 4. APP runner
 
 ## Description
 
