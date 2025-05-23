@@ -21,7 +21,7 @@ class S3Operation:
         try:
             command: str = (
                 f"aws s3 sync s3://{bucket_name}/{bucket_folder_name}/ {folder} "
-            )
+            ) # {folder} 之前要有空格，因為 {folder} 是目的地
 
             os.system(command)
 
