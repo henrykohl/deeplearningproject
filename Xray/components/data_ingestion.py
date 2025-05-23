@@ -45,7 +45,7 @@ class DataIngestion:
             data_ingestion_artifact: DataIngestionArtifact = DataIngestionArtifact(
                 train_file_path=self.data_ingestion_config.train_data_path,
                 test_file_path=self.data_ingestion_config.test_data_path,
-            )
+            ) # 建立 DataIngestionArtifact 物件，其中包含 train data path 與 test data path
 
             logging.info(
                 "Exited the initiate_data_ingestion method of Data ingestion class"
