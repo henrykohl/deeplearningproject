@@ -24,9 +24,9 @@ class DataIngestion:
             logging.info("Entered the get_data_from_s3 method of Data ingestion class")
 
             self.s3.sync_folder_from_s3(
-                folder=self.data_ingestion_config.data_path,
-                bucket_name=self.data_ingestion_config.bucket_name,
-                bucket_folder_name=self.data_ingestion_config.s3_data_folder,
+                folder=self.data_ingestion_config.data_path,   # 下載資料的存放路徑
+                bucket_name=self.data_ingestion_config.bucket_name, # bucket 名稱
+                bucket_folder_name=self.data_ingestion_config.s3_data_folder, # bucket中的資料夾名
             )
 
             logging.info("Exited the get_data_from_s3 method of Data ingestion class")
@@ -40,7 +40,7 @@ class DataIngestion:
         )
 
         try:
-            self.get_data_from_s3()
+            self.get_data_from_s3() # 從 s3 獲取資料
 
             data_ingestion_artifact: DataIngestionArtifact = DataIngestionArtifact(
                 train_file_path=self.data_ingestion_config.train_data_path,
