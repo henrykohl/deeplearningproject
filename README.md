@@ -419,7 +419,7 @@ class DataIngestion:
 
 ```bash
 git add .
-git commit -m "code skelaton updated"
+git commit -m "code skeleton updated"
 git push -u origin main
 ```
 
@@ -467,7 +467,7 @@ if __name__ == "__main__":
   train_pipeline.start_data_ingestion()s
 ```
 
-```
+```bash
 git add .
 git commit -m "training config updated"
 git push origin main
@@ -521,12 +521,12 @@ git push origin main
 
 * 在 VS Code 的 terminal 中，切換到 virtual environment 之下
 
-```
+```bash
 aws configure
-輸入 AWS Access Key ID
-輸入 AWS Secret Access Key
-Default region name 輸入: us-east-1
-Default output format[None]: 按下Enter
+# 輸入 AWS Access Key ID
+# 輸入 AWS Secret Access Key
+# 輸入: us-east-1 (在Default region name )
+# 按下Enter (在Default output format[None])
 ```
 
 - Upload 資料夾 [data](https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/view) 到 S3
@@ -552,7 +552,6 @@ python -m Xray.pipeline.training_pipeline
 !pip install aws configure --quiet
 !pip install awscli --quiet
 !aws configuration
-
 ```
 
 ```python
@@ -700,17 +699,17 @@ git push origin main
 ## Data Transformation (->)
 
 > 1. Augmentation
->    > 1. Brightness
->    >
->    > 2. Saturation
->    >
->    > 3. Size
->    >
->    > 4. Normalization
->    >
->    > 5. Centercrop
->    >
->    > 6. Random Rotation
+> > 1. Brightness
+> >
+> > 2. Saturation
+> >
+> > 3. Size
+> >
+> > 4. Normalization
+> >
+> > 5. Centercrop
+> >
+> > 6. Random Rotation
 
 - (->) : train-data.pkl & test-data.pkl
 
@@ -735,11 +734,11 @@ git push origin main
 
 * 完成 `/Xray/components/data_transformation.py`
 
-  > 新增 `def start_data_transformation`
+* `/Xray/pipeline/training_pipeline.py` 
+
+  > 新增 `def start_data_transformation` 的部分
   >
   > 修改 `def run_pipeline`
-
-* `/Xray/pipeline/training_pipeline.py` 完成 start_data_transformation 的部分
 
 * 執行 data ingestion (Lecture 2) + data transformation (Lecture 3) 功能
 
@@ -825,7 +824,7 @@ python main.py
   >            )
   > ```
   >
-  > 參考 [BentoML Documentation](https://docs.bentoml.com/en/latest/index.html)
+  > 見參考 8
 
 * 「1」Training Pipeline (Review)
 
@@ -1331,6 +1330,10 @@ aws configuration # 選擇 awscli 或 awscli2 (在Replit中好似不能自行下
 
 * 參 7 [Compare CodeSandbox vs. Codeanywhere vs. Codespaces vs. Gitpod](https://slashdot.org/software/comparison/CodeSandbox-vs-Codeanywhere-vs-Codespaces-vs-Gitpod/)
   > 共同特徵 -- online IDE for full stack project?
+
+* 參 8 [BentoML Pytorch Documentation](https://docs.bentoml.com/en/latest/reference/bentoml/frameworks/pytorch.html#bentoml.pytorch.save_model)
+
+* 參 9 [BentoML Documentation](https://docs.bentoml.com/en/latest/index.html)
 
 /usr/local/bin/aws
 

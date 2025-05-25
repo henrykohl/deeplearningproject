@@ -51,13 +51,13 @@ class ModelTrainer:
         logging.info("Entered the train method of Model trainer class")
 
         try:
-            self.model.train()
+            self.model.train() # 啟用 batch normalization 和 dropout 。
 
             pbar = tqdm(self.data_transformation_artifact.transformed_train_object) ## tqdm 套在 DataLoader
 
-            correct: int = 0
+            correct: int = 0 # 資料預測正確的數目
 
-            processed = 0
+            processed = 0 # 已預測資料的數目
 
             for batch_idx, (data, target) in enumerate(pbar):
                 data, target = data.to(DEVICE), target.to(DEVICE)
@@ -110,17 +110,17 @@ class ModelTrainer:
             """
             logging.info("Entered the test method of Model trainer class")
 
-            self.model.eval()
+            self.model.eval() # 停用 batch normalization 和 dropout 。
 
             test_loss: float = 0.0
 
-            correct: int = 0
+            correct: int = 0 # 資料預測正確的數目
 
             with torch.no_grad():
                 for (
                     data,
                     target,
-                ) in self.data_transformation_artifact.transformed_test_object:
+                ) in self.data_transformation_artifact.transformed_test_object: # test DataLoader
                     data, target = data.to(DEVICE), target.to(DEVICE)
 
                     output = self.model(data)
@@ -201,29 +201,29 @@ class ModelTrainer:
                 self.test()
 
             os.makedirs(self.model_trainer_config.artifact_dir, exist_ok=True) 
-            ## 「ARTIFACT_DIR + TIMESTAMP + "model_training"」
+            ## 資料夾「ARTIFACT_DIR + TIMESTAMP + "model_training"」
 
             torch.save(model, self.model_trainer_config.trained_model_path) 
-            ## 「ARTIFACT_DIR + TIMESTAMP + "model_training" + TRAINED_MODEL_NAME」
+            ## 檔案「ARTIFACT_DIR + TIMESTAMP + "model_training" + TRAINED_MODEL_NAME」
 
             train_transforms_obj = joblib.load(
                 self.data_transformation_artifact.train_transform_file_path
-                ## DataTransformationArtifact.train_transform_file_path
+                ## 轉型模式 pkl 檔案 DataTransformationArtifact.train_transform_file_path
             )
 
-            bentoml.pytorch.save_model(
-                name=self.model_trainer_config.trained_bentoml_model_name,
+            bentoml.pytorch.save_model( 
+                name=self.model_trainer_config.trained_bentoml_model_name, ## str 類型 "xray_model"
                 model=model,
                 custom_objects={
                     self.model_trainer_config.train_transforms_key: train_transforms_obj
-                    ## "xray_train_transforms": DataTransformationArtifact.train_transform_file_path
+                    ## "xray_train_transforms": 轉型模式 pkl 檔案 DataTransformationArtifact.train_transform_file_path
                 },
-            )
+            ) ## 保存訓練好的 model 模型到 BentoML 模型存儲
 
             model_trainer_artifact: ModelTrainerArtifact = ModelTrainerArtifact(
                 trained_model_path=self.model_trainer_config.trained_model_path
                 ## 「ARTIFACT_DIR + TIMESTAMP + "model_training" + TRAINED_MODEL_NAME」
-            )
+            ) ## 訓練後模型檔案(路徑) "model.pt"
 
             logging.info(
                 "Exited the initiate_model_trainer method of Model trainer class"

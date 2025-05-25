@@ -64,13 +64,13 @@ class DataTransformationConfig:
 @dataclass # Lec 4
 class ModelTrainerConfig: 
     def __init__(self):
-        self.artifact_dir: int = os.path.join(ARTIFACT_DIR, TIMESTAMP, "model_training") ## 應該是 str
+        self.artifact_dir: int = os.path.join(ARTIFACT_DIR, TIMESTAMP, "model_training") ## (應該是 str)
 
         self.trained_bentoml_model_name: str = "xray_model"
 
         self.trained_model_path: int = os.path.join( 
             self.artifact_dir, TRAINED_MODEL_NAME
-        ) ## 應該是 str
+        ) ## (應該是 str) 訓練模型檔案(路徑)
 
         self.train_transforms_key: str = TRAIN_TRANSFORMS_KEY
 

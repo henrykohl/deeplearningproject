@@ -131,22 +131,22 @@ class DataTransformation:
 
             joblib.dump(
                 train_transform, self.data_transformation_config.train_transforms_file
-            )
+            ) # 將轉型模式 train_transform 存成(pkl)檔案 data_transformation_config.train_transforms_file
 
             joblib.dump(
                 test_transform, self.data_transformation_config.test_transforms_file
-            )
+            ) # 將轉型模式 test_transform 存成(pkl)檔案 data_transformation_config.test_transforms_file
 
             train_loader, test_loader = self.data_loader(
                 train_transform=train_transform, test_transform=test_transform
-            )
+            ) # 建立 train dataloader 與 test dataloader
 
             data_transformation_artifact: DataTransformationArtifact = DataTransformationArtifact(
                 transformed_train_object=train_loader,
                 transformed_test_object=test_loader,
                 train_transform_file_path=self.data_transformation_config.train_transforms_file,
                 test_transform_file_path=self.data_transformation_config.test_transforms_file,
-            )
+            ) # 建立物件 DataTransformationArtifact
 
             logging.info(
                 "Exited the initiate_data_transformation method of Data transformation class"
