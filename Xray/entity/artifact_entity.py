@@ -24,7 +24,7 @@ class ModelTrainerArtifact:
     
 @dataclass # Lec 5
 class ModelEvaluationArtifact:
-    model_accuracy: float
+    model_accuracy: float  # 測試資料後的準確性結果
 
 @dataclass
 class ModelPusherArtifact:

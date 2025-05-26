@@ -915,7 +915,7 @@ python main.py
 
 * [Project Architecture](https://app.whiteboard.microsoft.com/me/whiteboards/3af4b83f-c715-41cd-82de-a8cd5efde3b3)
 
-* [CNN Architecture]() (1:37:25 )
+* CNN Architecture (1:37:25)
 
 - 完整完成 `/experiment/Experiment.ipynb`
 

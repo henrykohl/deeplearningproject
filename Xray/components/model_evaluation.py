@@ -47,7 +47,7 @@ class ModelEvaluation:
 
             model.to(self.model_evaluation_config.device)
 
-            cost: Module = CrossEntropyLoss()
+            cost: Module = CrossEntropyLoss() # 應該是 tensor 類型
 
             '''optimizer: Optimizer = SGD(
                 model.parameters(), **self.model_evaluation_config.optimizer_params
@@ -88,7 +88,8 @@ class ModelEvaluation:
                         holder.append(h)
 
                     logging.info(
-                        f"Actual_Labels : {labels}     Predictions : {predictions}     labels : {loss.item():.4f}"
+                        # f"Actual_Labels : {labels}     Predictions : {predictions}     labels : {loss.item():.4f}" # 應該標錯了
+                         f"Actual_Labels : {labels}     Predictions : {predictions}     loss : {loss.item():.4f}"
                     )
 
                     self.model_evaluation_config.test_loss += loss.item()

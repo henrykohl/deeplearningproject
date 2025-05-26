@@ -83,7 +83,7 @@ class TrainPipeline:
 
         try:
             data_transformation = DataTransformation(
-                data_ingestion_artifact=data_ingestion_artifact,
+                data_ingestion_artifact=data_ingestion_artifact,  # 來自 Lec 2
                 data_transformation_config=self.data_transformation_config,
             )
 
@@ -107,7 +107,7 @@ class TrainPipeline:
 
         try:
             model_trainer = ModelTrainer(
-                data_transformation_artifact=data_transformation_artifact,
+                data_transformation_artifact=data_transformation_artifact, # 來自 Lec 3
                 model_trainer_config=self.model_trainer_config,
             )
 
@@ -135,7 +135,7 @@ class TrainPipeline:
                 model_evaluation_config=self.model_evaluation_config, 
             )
 
-            model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
+            model_evaluation_artifact = model_evaluation.initiate_model_evaluation() # 測試資料後的準確性結果
 
             logging.info(
                 "Exited the start_model_evaluation method of TrainPipeline class"
