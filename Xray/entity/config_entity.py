@@ -98,7 +98,7 @@ class ModelEvaluationConfig:
         self.optimizer_params: dict = {"lr": 0.01, "momentum": 0.8}
 
 # Model Pusher Configurations
-@dataclass
+@dataclass # Lec 6
 class ModelPusherConfig:
     def __init__(self):
         self.bentoml_model_name: str = BENTOML_MODEL_NAME # "xray_model"
