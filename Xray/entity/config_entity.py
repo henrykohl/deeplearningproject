@@ -72,7 +72,7 @@ class ModelTrainerConfig:
             self.artifact_dir, TRAINED_MODEL_NAME
         ) ## (應該是 str) 訓練模型檔案(路徑)
 
-        self.train_transforms_key: str = TRAIN_TRANSFORMS_KEY
+        self.train_transforms_key: str = TRAIN_TRANSFORMS_KEY # "xray_train_transforms"
 
         self.epochs: int = EPOCH
 
@@ -96,3 +96,15 @@ class ModelEvaluationConfig:
         self.total_batch: int = 0
 
         self.optimizer_params: dict = {"lr": 0.01, "momentum": 0.8}
+
+# Model Pusher Configurations
+@dataclass
+class ModelPusherConfig:
+    def __init__(self):
+        self.bentoml_model_name: str = BENTOML_MODEL_NAME # "xray_model"
+
+        self.bentoml_service_name: str = BENTOML_SERVICE_NAME # "xray_service"
+
+        self.train_transforms_key: str = TRAIN_TRANSFORMS_KEY # "xray_train_transforms"
+
+        self.bentoml_ecr_image: str = BENTOML_ECR_URI # "xray_bento_image"
