@@ -17,7 +17,7 @@ class ModelPusher:
         try:
             logging.info("Building the bento from bentofile.yaml")
 
-            os.system("bentoml build") # 
+            os.system("bentoml build") # 構建打包 bento
 
             logging.info("Built the bento from bentofile.yaml")
 
@@ -26,7 +26,12 @@ class ModelPusher:
             os.system(
                 f"bentoml containerize {self.model_pusher_config.bentoml_service_name}:latest -t 136566696263.dkr.ecr.us-east-1.amazonaws.com/{self.model_pusher_config.bentoml_ecr_image}:latest"
             )
+            # 將 bentos 容器化为Docker 镜像，並使用模型和 bento 管理服務 來大規模管理bentos。
             # 136566696263.dkr.ecr.us-east-1.amazonaws.com 來自 AWS -- ECR 所建立的 repository
+            ## 136566696263 是 建立者 aws_account_id
+            ## us-east-1 是 映像建立的region
+            ## {self.model_pusher_config.bentoml_service_name} 是 repository 儲存庫名稱
+            ## latest 是 tag
 
             logging.info("Created docker image for bento")
 
@@ -35,6 +40,7 @@ class ModelPusher:
             os.system(
                 "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 136566696263.dkr.ecr.us-east-1.amazonaws.com"
             )
+            # 執行 aws ecr get-login-password 命令。將身分驗證字符傳遞給 docker login 命令時，使用 AWS 的值作為使用者名稱並指定您要驗證的 Amazon ECR 登錄檔 URI。
 
             logging.info("Logged into ECR")
 
@@ -43,7 +49,8 @@ class ModelPusher:
             os.system(
                 f"docker push 136566696263.dkr.ecr.us-east-1.amazonaws.com/{self.model_pusher_config.bentoml_ecr_image}:latest"
             )
-            # 136566696263.dkr.ecr.us-east-1.amazonaws.com 來自 AWS -- ECR 所建立的 repository
+            # 推送映像
+            ## 136566696263.dkr.ecr.us-east-1.amazonaws.com 來自 AWS -- ECR 所建立的 repository
 
             logging.info("Pushed bento image to ECR")
 
@@ -66,11 +73,11 @@ class ModelPusher:
         logging.info("Entered initiate_model_pusher method of ModelPusher class")
 
         try:
-            self.build_and_push_bento_image()
+            self.build_and_push_bento_image() # 建立與推送 映像 至 AWS ECR
 
             model_pusher_artifact = ModelPusherArtifact(
-                bentoml_model_name=self.model_pusher_config.bentoml_model_name,
-                bentoml_service_name=self.model_pusher_config.bentoml_service_name,
+                bentoml_model_name=self.model_pusher_config.bentoml_model_name, # "xray_model"
+                bentoml_service_name=self.model_pusher_config.bentoml_service_name, # "xray_service"
             )
 
             logging.info("Exited the initiate_model_pusher method of ModelPusher class")
