@@ -9,11 +9,15 @@ from PIL import Image as PILImage
 from Xray.constant.training_pipeline import *
 
 bento_model = bentoml.pytorch.get(BENTOML_MODEL_NAME) # returns A Model
+## his retrieves a saved PyTorch model from the BentoML model store, identified by its name and tag.
 
 runner = bento_model.to_runner()
+## transforms the retrieved model into a Runner. Runners are objects that encapsulate the model 
+# and provide a standardized way to interact with it, such as for prediction.
 
 svc = bentoml.Service(name=BENTOML_SERVICE_NAME, runners=[runner])
-
+## for building a BentoML service. It defines how your model will be exposed as an API. 
+# Use bentoml.Service to define the input/output interfaces, the runners to use, and the overall service logic.
 
 @svc.api(input=Image(allowed_mime_types=["image/jpeg"]), output=Text())
 async def predict(img): # img 應該是 PIL.JpegImagePlugin.JpegImageFile 類型

@@ -950,10 +950,27 @@ python main.py
 > (1:02:34) 開始解說
 
 * 建立完成 `/test.py` (1:06:55)
-
->  執行 `python test.py` (requirements_dev.txt 必要存在)
+>  執行 `python test.py` (requirements_dev.txt 必要存在)，示範 `os.system` 命令用法
 
 * 完整完成 `/bentofile.yaml`
+
+```yaml
+service: "Xray.ml.model.model_service:svc"
+labels:
+    owner: ineuron-team
+    stage: dev
+include:
+    - "Xray/ml/model/model_service.py"
+    - "Xray/constant/training_pipeline/__init__.py"
+python:
+    packages:
+        - torch
+        - torchvision
+        - Pillow
+        - numpy
+    extra_index_url:
+        - "https://download.pytorch.org/whl/cpu"
+```
 
 * AWS ECR （1:10:00）
 
