@@ -55,11 +55,11 @@ class DataTransformationConfig:
 
         self.train_transforms_file: str = os.path.join(
             self.artifact_dir, TRAIN_TRANSFORMS_FILE
-        )
+        ) # "artifacts" + TIMESTAMP + "data_transformation" + "train_transforms.pkl"
 
         self.test_transforms_file: str = os.path.join(
             self.artifact_dir, TEST_TRANSFORMS_FILE
-        )
+        ) # "artifacts" + TIMESTAMP + "data_transformation" + "test_transforms.pkl"
 
 @dataclass # Lec 4
 class ModelTrainerConfig: 
