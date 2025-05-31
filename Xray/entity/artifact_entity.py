@@ -14,9 +14,9 @@ class DataTransformationArtifact:
 
     transformed_test_object: DataLoader # 測試資料轉換後的 DataLoader
 
-    train_transform_file_path: str # 轉型模式 train_transform 的檔案(路徑)
+    train_transform_file_path: str # 轉型模式 train_transform 的檔案(路徑): # "artifacts" + TIMESTAMP + "data_transformation" + "train_transforms.pkl" 
 
-    test_transform_file_path: str # 轉型模式 test_transform 的檔案(路徑)
+    test_transform_file_path: str # 轉型模式 test_transform 的檔案(路徑): # "artifacts" + TIMESTAMP + "data_transformation" + "test_transforms.pkl"
 
 @dataclass # Lec 4
 class ModelTrainerArtifact:
