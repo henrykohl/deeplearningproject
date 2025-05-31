@@ -27,7 +27,7 @@ async def predict(img): # img 應該是 PIL.JpegImagePlugin.JpegImageFile 類型
 
     im_bytes = b.getvalue() # im_bytes 是 bytes 類型
 
-    my_transforms = bento_model.custom_objects.get(TRAIN_TRANSFORMS_KEY)
+    my_transforms = bento_model.custom_objects.get(TRAIN_TRANSFORMS_KEY) ## 從 bento model 提取 轉型模式物件 
 
     image = PILImage.open(io.BytesIO(im_bytes)).convert("RGB")
 

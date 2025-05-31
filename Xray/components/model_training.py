@@ -209,14 +209,14 @@ class ModelTrainer:
             train_transforms_obj = joblib.load(
                 self.data_transformation_artifact.train_transform_file_path
                 ## "artifacts" + TIMESTAMP + "data_transformation" + "train_transforms.pkl"
-            ) ## 載入 轉型模式 
+            ) ## 載入 轉型模式物件 
 
             bentoml.pytorch.save_model( 
                 name=self.model_trainer_config.trained_bentoml_model_name, ## str 類型 "xray_model"
                 model=model,
                 custom_objects={
                     self.model_trainer_config.train_transforms_key: train_transforms_obj
-                    ## "xray_train_transforms": 轉型模式 
+                    ## "xray_train_transforms": 轉型模式物件 
                 },
             ) ## 保存訓練好的 model 模型到 BentoML 模型存儲
 
