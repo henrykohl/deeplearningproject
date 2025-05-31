@@ -131,11 +131,13 @@ class DataTransformation:
 
             joblib.dump(
                 train_transform, self.data_transformation_config.train_transforms_file
-            ) # 將轉型模式 train_transform 存成(pkl)檔案 data_transformation_config.train_transforms_file
+            ) # 將轉型模式 train_transform 存成 data_transformation_config.train_transforms_file 檔案(pkl),
+            ## "artifacts" + TIMESTAMP + "data_transformation" + "train_transforms.pkl"
 
             joblib.dump(
                 test_transform, self.data_transformation_config.test_transforms_file
-            ) # 將轉型模式 test_transform 存成(pkl)檔案 data_transformation_config.test_transforms_file
+            ) # 將轉型模式 test_transform 存成 data_transformation_config.test_transforms_file 檔案(pkl),
+            ## "artifacts" + TIMESTAMP + "data_transformation" + "test_transforms.pkl"
 
             train_loader, test_loader = self.data_loader(
                 train_transform=train_transform, test_transform=test_transform
