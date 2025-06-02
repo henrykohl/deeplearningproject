@@ -70,4 +70,5 @@ BENTOML_SERVICE_NAME: str = "xray_service"
 
 BENTOML_ECR_URI: str = "xray_bento_image"
 
-PREDICTION_LABEL: dict = {"0": CLASS_LABEL_1, 1: CLASS_LABEL_2}
+PREDICTION_LABEL: dict = {"0": CLASS_LABEL_1, 1: CLASS_LABEL_2} 
+# 似乎有問題 PREDICTION_LABEL[0] 會有錯誤(KeyError)，PREDICTION_LABEL["0"] 才可得到正確結果 
