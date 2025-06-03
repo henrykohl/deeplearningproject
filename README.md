@@ -977,6 +977,7 @@ python:
 >  在 AWS 的 ECR 建立一個 repository: `xray_bento_image`
 
 * 建立 `/Xray/ml/model/model_service.py`
+> `bentofile.yaml` 所需用到
 
 * BentoML 教學 (1:14:10)
 > [BentoML github](https://github.com/bentoml/BentoML)
@@ -984,8 +985,7 @@ python:
 > [BentoML](https://bentoml.com/)
 
 * 解說 `/Xray/ml/model/model_service.py` (1:21:00)
-
-> * 建立所需的 API
+> 建立所需的 API
 
 * 解說 `/bentofile.yaml` (1:27:50)
 
