@@ -28,6 +28,6 @@ class ModelEvaluationArtifact:
 
 @dataclass
 class ModelPusherArtifact:
-    bentoml_model_name: str
+    bentoml_model_name: str # "xray_model"
 
-    bentoml_service_name: str
+    bentoml_service_name: str # "xray_service"
