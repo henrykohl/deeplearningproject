@@ -23,7 +23,7 @@ svc = bentoml.Service(name=BENTOML_SERVICE_NAME, runners=[runner])
 async def predict(img): # img 應該是 PIL.JpegImagePlugin.JpegImageFile 類型
     b = io.BytesIO() # _io.BytesIO 類型
 
-    img.save(b, "jpeg")
+    img.save(b, "jpeg") # 把 img 存到 BytesIO
 
     im_bytes = b.getvalue() # im_bytes 是 bytes 類型
 
