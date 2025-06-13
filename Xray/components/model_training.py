@@ -180,6 +180,8 @@ class ModelTrainer:
             )
 
             model: Module = self.model.to(self.model_trainer_config.device) ## ModelTrainerConfig.device
+            # 也可只寫成 self.model.to(...)，但後面用到 model 的地方，需要改用 self.model       
+
 
             optimizer: Optimizer = torch.optim.SGD(
                 model.parameters(), **self.model_trainer_config.optimizer_params
