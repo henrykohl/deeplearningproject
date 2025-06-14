@@ -31,7 +31,7 @@ class ModelEvaluation:
 
         self.model_evaluation_config = model_evaluation_config
 
-        self.model_trainer_artifact = model_trainer_artifact
+        self.model_trainer_artifact = model_trainer_artifact # 訓練後模型檔案(路徑)
 
     def configuration(self) -> Tuple[DataLoader, Module, float, Optimizer]: ## 應該是 [DataLoader, Module, CrossEntropyLoss]
         logging.info("Entered the configuration method of Model evaluation class")
@@ -41,7 +41,7 @@ class ModelEvaluation:
                 self.data_transformation_artifact.transformed_test_object
             )
 
-            # model: Module = Net() 此是多餘的
+            # model: Module = Net() 此是多餘的，因下行直接載入 model
 
             model: Module = torch.load(self.model_trainer_artifact.trained_model_path)
 
@@ -134,7 +134,7 @@ class ModelEvaluation:
                 "Exited the initiate_model_evaluation method of Model evaluation class"
             )
 
-            return model_evaluation_artifact
+            return model_evaluation_artifact # 模型驗證測試後的 accuracy
 
         except Exception as e:
             raise XRayException(e, sys)
