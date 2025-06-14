@@ -193,7 +193,9 @@ class TrainPipeline:
         except Exception as e:
             raise XRayException(e, sys)
 
+
+## 完成 Lec 2 時，用來單獨測試執行 training_pipeline.py 時，所需要的
 if __name__ == "__main__":
   train_pipeline=TrainPipeline()
 
-  train_pipeline.start_data_ingestion()
+  train_pipeline.start_data_ingestion() # 測試 Lec 2 功能
