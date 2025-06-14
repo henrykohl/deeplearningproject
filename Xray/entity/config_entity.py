@@ -85,17 +85,17 @@ class ModelTrainerConfig:
 @dataclass # Lec 5
 class ModelEvaluationConfig: 
     def __init__(self):
-        self.device: device = DEVICE
+        self.device: device = DEVICE  # configuration() 中設定所需
 
-        self.test_loss: int = 0
+        self.test_loss: int = 0       # test_net() 中用來儲存 loss 的總值
 
-        self.test_accuracy: int = 0
+        self.test_accuracy: int = 0   # test_net() 中用來儲存 predictions 的正確數量
 
-        self.total: int = 0
+        self.total: int = 0           # test_net() 中用來儲存  labels 的 長度
 
-        self.total_batch: int = 0
+        self.total_batch: int = 0     # test_net() 中用來儲存  batch 的 數量
 
-        self.optimizer_params: dict = {"lr": 0.01, "momentum": 0.8}
+        self.optimizer_params: dict = {"lr": 0.01, "momentum": 0.8} ## Evaluation 似乎沒用到
 
 # Model Pusher Configurations
 @dataclass # Lec 6
