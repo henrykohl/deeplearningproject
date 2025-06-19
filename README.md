@@ -1057,6 +1057,52 @@ python:
 
 ---
 
+# Lecture 7 -- [Deployment with CI-CD pipeline - part1](https://www.youtube.com/watch?v=Tm49jrcKRyI)
+
+* 根據 [Github: Xray lung classifier](https://github.com/henrykohl/deeplearningupdatedwithstreamlit)
+
+* 開啟 terminal，使用 Git bash
+  > ```bash
+  > source activate base
+  > source activate ./venv
+  > ```
+
+* 建立 `Dockerfile` 檔案
+  > 更多細節，參見 [MLOps Foundations.](https://www.youtube.com/playlist?list=PLmQAMKHKeLZ9iaLWBULDE_hiPtOiHiDz0)
+
+* 建立 `.dockerignore`
+
+* 建立 `.github/workflows/main.yml`
+
+* Docker workflow (17:20)
+  > 1. Source code
+  > 
+  > 2. Build docker image
+  > 
+  > 3. Push to the Docker hub
+  > 
+  > 4. Create AWS EC2 instance
+  > 
+  > 5. Create the IAM USER (have access to the EC2)
+  > 
+  > 6. Launch docker to the Ec2
+
+  > workflow(yaml)
+  >
+  > > CI/CD (1: continuous integration/continuous delivery)/CD (2: continuous deployment)
+  > 
+  > > > 1: github action server 
+  > > >
+  > > > 2: EC2(self-hosted runner)
+
+* 完成 `Dockerfile` (26:10)
+
+* 完成 `.dockerignore` (33:25) 
+
+* 完成 `.github/workflows/main.yml` (34:45) 
+
+* 介紹 Github action
+
 # 補充
 
 - `colabscript.ipynb` 可以實現將此 project (Lec 1 ~ Lec 3) 在 Colab 上運行（可使用 free GPU）
