@@ -1002,30 +1002,8 @@ python:
 * [bug: KeyError: 'name'](https://github.com/bentoml/BentoML/issues/4500)(1:40:55)
 
 * 用 Streamlit 取代 BentoML (1:47:30)
-> - Github repository -- [Xray-lung-classifier](https://github.com/sunnysavita10/Xray-lung-classifier)
->
-> 1. 檢視 `/xray/components/model_pusher.py`
->
-> > * 訓練後模型的路徑 `/model/model.pt`
-> 
-> > * just upload MODEL file to s3
->
-> 2. 檢視 `/app.py`
->
-> 3. 檢視 `/xray/cloud_storage/s3_ops.py`
-> > * 使用 boto3 來連接 s3
->
-> 4. 建立 virtual environment: `conda create -p venv python=3.8 -y`
->
-> 5. 執行 `source activate ./venv`
->
-> 6. 執行 `pip install -r requirments.txt`
->
-> 7. 執行 `streamlit run app.py`，後開啟 web APP (2:00:50)
->
-> 8. google 一張 'pneumonia lungs x ray' 的 jpeg 圖，將其下載，
->
-> 9. 將 jpeg 檔上傳至 web APP -- 檔案將存到 `/images/input.jpeg`
+
+[Lecture Note](https://github.com/henrykohl/deeplearningupdatedwithstreamlit?tab=readme-ov-file#%E7%94%A8-streamlit-%E5%8F%96%E4%BB%A3-bentoml-14730)
 
 * Project saved in Github [deeplearningproject](https://github.com/henrykohl/deeplearningproject)
 > * `git remote -v`
@@ -1059,49 +1037,11 @@ python:
 
 # Lecture 7 -- [Deployment with CI-CD pipeline - part1](https://www.youtube.com/watch?v=Tm49jrcKRyI)
 
-* 根據 [Github: Xray lung classifier](https://github.com/henrykohl/deeplearningupdatedwithstreamlit)
+[Lecture Note](https://github.com/henrykohl/deeplearningupdatedwithstreamlit#lecture-7----deployment-with-ci-cd-pipeline---part1)
 
-* 開啟 terminal，使用 Git bash
-  > ```bash
-  > source activate base
-  > source activate ./venv
-  > ```
+# Lecture 8 -- [Deployment with CICD Part -2](https://www.youtube.com/watch?v=TmSGVD2QBKA)
 
-* 建立 `Dockerfile` 檔案
-  > 更多細節，參見 [MLOps Foundations.](https://www.youtube.com/playlist?list=PLmQAMKHKeLZ9iaLWBULDE_hiPtOiHiDz0)
-
-* 建立 `.dockerignore`
-
-* 建立 `.github/workflows/main.yml`
-
-* Docker workflow (17:20)
-  > 1. Source code
-  > 
-  > 2. Build docker image
-  > 
-  > 3. Push to the Docker hub
-  > 
-  > 4. Create AWS EC2 instance
-  > 
-  > 5. Create the IAM USER (have access to the EC2)
-  > 
-  > 6. Launch docker to the Ec2
-
-  > workflow(yaml)
-  >
-  > > CI/CD (1: continuous integration/continuous delivery)/CD (2: continuous deployment)
-  > 
-  > > > 1: github action server 
-  > > >
-  > > > 2: EC2(self-hosted runner)
-
-* 完成 `Dockerfile` (26:10)
-
-* 完成 `.dockerignore` (33:25) 
-
-* 完成 `.github/workflows/main.yml` (34:45) 
-
-* 介紹 Github action
+[Lecture Note](https://github.com/henrykohl/deeplearningupdatedwithstreamlit?tab=readme-ov-file#lecture-8----deployment-with-cicd-part--2)
 
 # 補充
 
